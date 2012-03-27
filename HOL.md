@@ -19,6 +19,7 @@ Lastly, you will let users delete an album and also you will prevent them from e
 ### Objectives ###
 
 In this Hands-On Lab, you will learn how to:
+
 - Create a controller to support CRUD operations
 - Generate an Index View to display entity properties in an HTML table
 - Add a custom HTML helper
