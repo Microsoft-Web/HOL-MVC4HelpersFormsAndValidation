@@ -512,7 +512,7 @@ In this task, you will create a new StoreManagerViewModel class to help manage a
 
 	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternativelly install the NuGet Power Tools from the **Manage NuGet Packages** window. 
 
-	1.	After installing the package, type **Enable-PackageBuild**.
+	1.	After installing the package, type **Enable-PackageRestore**.
 
 	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
 
@@ -828,7 +828,7 @@ In this task, you will implement the HTTP-GET version of the Create action metho
 
 	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternativelly install the NuGet Power Tools from the **Manage NuGet Packages** window. 
 
-	1.	After installing the package, type **Enable-PackageBuild**.
+	1.	After installing the package, type **Enable-PackageRestore**.
 
 	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
 
@@ -1149,7 +1149,7 @@ In this task, you will add Data Annotations to the Album Model that will make th
 
 	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternativelly install the NuGet Power Tools from the **Manage NuGet Packages** window. 
 
-	1.	After installing the package, type **Enable-PackageBuild**.
+	1.	After installing the package, type **Enable-PackageRestore**.
 
 	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
 
