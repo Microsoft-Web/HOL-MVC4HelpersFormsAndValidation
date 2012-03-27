@@ -471,7 +471,7 @@ In this task, you will use the **Truncate** method to truncate the text in the V
 In this task, you will test that the **StoreManager** **Index** View template truncates the Album’s Title and Artist Name.
 
 1.	Press **F5** to run the Application.
-1.	The project starts in the Home page. Change the URL to **/StoreManager** to verify that long texts in the **Title** and **Artist** column **** are truncated.
+1.	The project starts in the Home page. Change the URL to **/StoreManager** to verify that long texts in the **Title** and **Artist** column are truncated.
 
 	![Truncated titles and artists names](images/truncated-titles-and-artists-names.png?raw=true "Truncated titles and artists names")
 
@@ -608,11 +608,9 @@ In this task, you will create an Edit View template that will later display the 
 	_Adding an Edit view_
 
 1.	The generated Edit View template doesn’t include any fields because none of the properties in the StoreManagerViewModel are simple types like strings and integers.
-
 	![edit-view-without-fields](images/edit-view-without-fields.png?raw=true)
 
 	_Edit View without fields_
-
 
 <a name="Ex03Task4" />
 #### Task 4 - Customizing the Edit View ####
@@ -664,7 +662,6 @@ Since the exact same form fields for Album Edit will be needed to handle the Alb
 	![Adding a view template](images/adding-a-view-template.png?raw=true "Adding a view template")
 
 	_Adding a View template_
-
 
 1.	This will be a Partial View, meaning that it is intended to be displayed inside another view. In the Add View dialog, change the Name to **Album**. Select the **Create as partial view ** and the **Create a strongly-typed view** options. Select **Album (MvcMusicStore. Models)** from the **Model class** drop-down and select **Edit** from the **Scaffold tempalte** drop-down. Leave the other fields with their default value and then click **Add**.
 
@@ -794,7 +791,6 @@ In this task, you will test that the **StoreManager Edit** View page actually sa
 1.	Press **F5** to run the Application.
 
 1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/388**. Change the Album title to **Greatest Hits Vol. 1** and click on **Save**. Verify that album’s title actually changed in the list of albums.
-
 	
 	![Updating an album](images/updating-an-album.png?raw=true "Updating an album")
 
@@ -1031,7 +1027,6 @@ In this task, you will implement the HTTP-GET version of the Delete action metho
 
 	_Adding a Delete View_
 
-
 1.	The Delete template shows all the fields from the model. You will show only the album’s title. To do this, replace the content of the view with the following code:
 
 	<!-- mark:5-14 -->
@@ -1103,7 +1098,6 @@ Because of Referential Integrity, a deletion of an **Album** could raise an exce
 
 1.	On the Solution Explorer expand the **Models** folder and then double-click **StoreDB.edmx**. This opens the Entity Data Model designer.
 1.	Open the **Models/StoreDB.edmx** entity diagram. Right-click the relation between **Album** and **OrderDetail** and select **Properties**.
-
 	
 	![Editing properties on a relation](images/editing-properties-on-a-relation.png?raw=true)
 
@@ -1114,7 +1108,6 @@ Because of Referential Integrity, a deletion of an **Album** could raise an exce
 	![OnDelete property](images/ondelete-property.png?raw=true "OnDelete property")
 
 	_OnDelete property_
-
 
 <a name="Ex05Task5" />
 #### Task 5 - Running the Application ####
@@ -1138,15 +1131,28 @@ Currently, the Create and Edit forms you have in place do not perform any kind o
 
 You can add validation to the application by adding Data Annotations to your model class. Data Annotations allow describing the rules you want applied to your model properties, and ASP.NET MVC will take care of enforcing and displaying appropriate message to users.
 
-Additionally, you will add client-side (AJAX) validation that will check all fields in the browser before being submitted to the controller actions.
-
 <a name="Ex06Task1" />
 #### Task 1 - Adding Data Annotations ####
 
 In this task, you will add Data Annotations to the Album Model that will make the Create and Edit page display validation messages when appropriate.
 
-1.	Start Microsoft Visual Web Developer 2010 Express from **Start** | **All Programs** | **Microsoft Visual Studio 2010 Express** | **Microsoft Visual Web Developer 2010 Express**. 
-1. In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to **Source\Ex06-AddingValidation\Begin**, select **MvcMusicStore.sln** and click **Open**.
+1. Start Microsoft Visual Studio 11 from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
+
+1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex06-AddingValidation\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternativelly continue working with the solution of the previous exercise.
+
+1.	Follow these steps to install the **NuGet** package dependencies.
+
+	>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
+
+	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
+
+	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternativelly install the NuGet Power Tools from the **Manage NuGet Packages** window. 
+
+	1.	After installing the package, type **Enable-PackageBuild**.
+
+	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
+
+1.	Add a new metadata partial class. To do this, right-click the **Models** folder within the Solution Explorer, select **Add** and then **Class**. Name it **Album.cs** and click **OK**.
 
 	>**Note:** For a simple Model class, adding a Data Annotation is just handled by adding a **using** statement for **System.ComponentModel.DataAnnotation**, then placing a **[Required]** attribute on the appropriate properties.
 	>The following example would make the **Name** property a required field in the View.
@@ -1167,10 +1173,7 @@ In this task, you will add Data Annotations to the Album Model that will make th
 	>This is a little more complex in cases like this application where the Entity Data Model is generated. If you added Data Annotations directly to the model classes, they would be overwritten if you update the model from the database.
 	>Instead, you can make use of metadata partial classes which will exist to hold the annotations and are associated with the model classes using the **\[MetadataType\]** attribute.
 
-1.	Add a new metadata partial class. To do this, right-click the **Models** folder within the Solution Explorer, select **Add** and then **Class**. Name it **Album.cs** and click **OK**.
-
 1.	Replace **Album.cs** content with the highlighted code, so that it looks like the following:
-
 
 	>**Note:** The line **\[DisplayFormat(ConvertEmptyStringToNull=false)\]** indicates that empty strings from the model won’t be converted to null when the data field is updated in the data source. 
 	>This setting will avoid an exception when the Entity Framework assigns null values to the model before Data Annotation validates the fields.
@@ -1233,7 +1236,6 @@ In this task, you will add Data Annotations to the Album Model that will make th
 	>-  Bind - Lists fields to exclude or include when binding parameter or form values to model properties
 	>-  ScaffoldColumn - Allows hiding fields from editor forms
 
-
 <a name="Ex06Task2" />
 #### Task 2 - Running the Application ####
 
@@ -1267,4 +1269,3 @@ By completing this Hands-On Lab you have learned how to enable users to change t
 - A shared editor template for similar View templates like Create and Edit
 - Form elements like drop-downs
 - Data annotations for Model validation
-- Client-side AJAX validation
