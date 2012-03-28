@@ -5,9 +5,9 @@
 <a name="Overview" />
 ## Overview ##
 
->**Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC**. If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hand-on Lab.
+>**Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC**. If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hands-on Lab.
 
-In **ASP.NET MVC Models and Data Access** Hand-on Lab, you have been loading and displaying data from the database. In this Hands-on Lab, you will add to the **Music Store** application the ability to edit that data.
+In **ASP.NET MVC Models and Data Access** Hands-on Lab, you have been loading and displaying data from the database. In this Hands-on Lab, you will add to the **Music Store** application the ability to edit that data.
 
 With that goal in mind, you will first create the controller that will support the Create, Read, Update and Delete (CRUD) actions of albums. You will generate an Index View template taking advantage of ASP.NET MVC’s scaffolding feature to display the albums’ properties in an HTML table. To enhance that view, you will add a custom HTML helper that will truncate long descriptions.
 
@@ -144,7 +144,7 @@ In this task, you will customize the StoreManager Index action method to return 
 
 1.	In the StoreManagerController class, add a _using_ directive to MvcMusicStore.Models:
 
-	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 using MvcMusicStore_ – CSharp)
+	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 using MvcMusicStore_)
 
 	<!-- mark:2 -->
 	````C#
@@ -154,7 +154,7 @@ In this task, you will customize the StoreManager Index action method to return 
 
 1. Add a field to the **StoreManagerController** to hold an instance of **MusicStoreEntities.**
 
-	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 MusicStoreEntities_ – CSharp)
+	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 MusicStoreEntities_)
 
 	<!-- mark:3 -->
 	````C#
@@ -167,7 +167,7 @@ In this task, you will customize the StoreManager Index action method to return 
 
 	The Controller action logic will be very similar to the StoreController’s Index action written earlier. Use LINQ to retrieve all albums, including Genre and Artist information for display.
 
-	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 StoreManagerController Index_ – CSharp)
+	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 StoreManagerController Index_)
 
 	<!-- mark:6-10 -->
 	````C#
@@ -198,7 +198,7 @@ In this task, you will create the Index View template to display the list of alb
 	
 	_Adding a View from within the Index method_ 
 
-1.	In the Add View dialog, verify that the View Name is **Index**. Select the **Create a strongly-typed view** option, and select **Album (MvcMusicStore.Models)** from the **Model class** drop-down. Select **List** from the **Scaffold** drop-down. Leave the **View engine** to **Razor**  and the other fields with their default value and then click **Add**.
+1.	In the Add View dialog, verify that the View Name is **Index**. Select the **Create a strongly-typed view** option, and select **Album (MvcMusicStore.Models)** from the **Model class** drop-down. Select **List** from the **Scaffold template** drop-down. Leave the **View engine** to **Razor**  and the other fields with their default value and then click **Add**.
 	
 	![Adding an index view](images/index-add-view-dialog.png?raw=true "Adding an index view")
  
@@ -362,7 +362,7 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 
 1.	Follow these steps to install the **NuGet** package dependencies.
 
-		>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
+	>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
 
 	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
 
@@ -379,6 +379,7 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 	_Adding Helpers' folder_
 
 1.	Rename the folder to **Helpers**.
+
 	![Helpers folder](images/helpers-folder.png?raw=true "Helpers folder")
 
 	_Helpers folder_
@@ -391,7 +392,7 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 
 1.	Add a using directive to **System.Web.Mvc** and a new method to the class. Because of extension methods definition, HtmlHelpers and the new method need to be static. Replace with the following code:
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex2 TruncateMethod_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex2 TruncateMethod_)
 
 	<!-- mark:5-23 -->
 	````C#
@@ -456,7 +457,8 @@ In this task, you will use the **Truncate** method to truncate the text in the V
 
 1. Open StoreManager's Index View. To do this, in the Solution Explorer expand the **Views** folder, then the **StoreManager** and open the **Index.cshtml** file.
 1. Replace the lines that show the Album's **Title** and **Artist Name**. To do this, replace the following lines:
-	<!-- mark:9 -->
+	
+	<!-- mark:1-7 -->
 	````HTML
 	<td>            
 		@Html.Truncate(@Html.DisplayFor(modelItem => item.Title).ToHtmlString(),25)
@@ -522,7 +524,7 @@ In this task, you will create a new StoreManagerViewModel class to help manage a
 
 1. Add the following directions in the **StoreManagerViewModel.cs** class.
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 using System.Web.Mvc and MvcMusicStore.Models_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 using System.Web.Mvc and MvcMusicStore.Models_)
 
 	<!--mark: 5,6-->
 	````C#
@@ -536,7 +538,7 @@ In this task, you will create a new StoreManagerViewModel class to help manage a
 
 1.	Add the **Album**, **Artists** and **Genres** properties.
 
-	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex3 StoreManagerViewModel properties_ – CSharp)
+	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex3 StoreManagerViewModel properties_)
 
 	<!-- mark:3-5 -->
 	````C#
@@ -561,7 +563,7 @@ In this task, you will implement the HTTP-GET version of the Edit action method 
 1.	Open the **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 1.	Add the following directive to **MvcMusicStore.ViewModels**. 
 	
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 using MvcMusicStore.ViewModels_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 using MvcMusicStore.ViewModels_)
 
 	<!-- mark:2 -->
 	````C#
@@ -571,7 +573,7 @@ In this task, you will implement the HTTP-GET version of the Edit action method 
 
 1.	Replace the **HTTP-GET Edit** action method with the following code to retrieve the appropriate **Album** as well as the **Genres** and **Artists** lists.
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 StoreManagerController HTTP-GET Edit action_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 StoreManagerController HTTP-GET Edit action_)
 
 	<!-- mark:3-12 -->
 	````C#
@@ -609,6 +611,7 @@ In this task, you will create an Edit View template that will later display the 
 	_Adding an Edit view_
 
 1.	The generated Edit View template doesn’t include any fields because none of the properties in the StoreManagerViewModel are simple types like strings and integers.
+
 	![edit-view-without-fields](images/edit-view-without-fields.png?raw=true)
 
 	_Edit View without fields_
@@ -664,7 +667,7 @@ Since the exact same form fields for Album Edit will be needed to handle the Alb
 
 	_Adding a View template_
 
-1.	This will be a Partial View, meaning that it is intended to be displayed inside another view. In the Add View dialog, change the Name to **Album**. Select the **Create as partial view ** and the **Create a strongly-typed view** options. Select **Album (MvcMusicStore. Models)** from the **Model class** drop-down and select **Edit** from the **Scaffold tempalte** drop-down. Leave the other fields with their default value and then click **Add**.
+1.	This will be a Partial View, meaning that it is intended to be displayed inside another view. In the Add View dialog, change the Name to **Album**. Select the **Create as partial view** and the **Create a strongly-typed view** options. Select **Album (MvcMusicStore. Models)** from the **Model class** drop-down and select **Edit** from the **Scaffold tempalte** drop-down. Leave the other fields with their default value and then click **Add**.
 
 	![Adding a partial view](images/adding-a-partial-view.png?raw=true "Adding a partial view")
 
@@ -704,7 +707,7 @@ In this task, you will add drop-downs to the View template created in the last t
 		<p>
 			@Html.LabelFor(model => model.Genre)
 			@Html.DropDownList("GenreId", (SelectList) ViewData["Genres"])
-|		</p>           
+		</p>           
 	````
 
 	>**Note:** An **Html.DropDownList** helper has been added to render drop-downs for choosing Artists and Genres. The parameters passed to **Html.DropDownList** are:
@@ -740,7 +743,7 @@ Now that the Edit View displays as expected, you need to implement the HTTP-POST
 1.	Close the browser if needed, to return to the Visual Studio window. Open **StoreManagerController** from the **Controllers** folder.
 1.	Replace **HTTP-POST Edit** action method code with the following (note that the method that must be replaced is overloaded version that receives two parameters):
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 StoreManagerController HTTP-POST Edit action_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 StoreManagerController HTTP-POST Edit action_)
 	
 	<!-- mark:4-27 -->
 	````C#
@@ -780,7 +783,7 @@ Now that the Edit View displays as expected, you need to implement the HTTP-POST
 	>The method will perform three steps:
 	>
 	>1. Load the existing album object from the database with the **id** passed as parameter
-	>1. Try to update the album using the values posted from the client, using the Controller’s built-in **UpdateModel** method. The **UpdateModel** method actually relies on the **ModelBinder** (MVC 2.0) to identify that you are actually updating a **StoreManagerViewModel** instance. Since that **ViewModel** holds an **Album** object and also 2 **SelectList**s for **Artists** and **Genres**, the key **“Album”** you are including as **UpdateModel**’s second parameter, refers to the need of updating the **“Album”** property of the Model.
+	>1. Try to update the album using the values posted from the client, using the Controller’s built-in **UpdateModel** method. The **UpdateModel** method actually relies on the **ModelBinder** (MVC 2.0) to identify that you are actually updating a **StoreManagerViewModel** instance. Since that **ViewModel** holds an **Album** object and also 2 **SelectLists** for **Artists** and **Genres**, the key **“Album”** you are including as **UpdateModel**’s second parameter, refers to the need of updating the **“Album”** property of the Model.
 	>1. Display results back to the user - either by redisplaying the form in case of an error, or by redirecting back to the list of albums in case of a successful update.
 
 
@@ -836,7 +839,7 @@ In this task, you will implement the HTTP-GET version of the Create action metho
 
 1.	Replace the **Create** action method code with the following:
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex4 StoreManagerController HTTP-GET Create action_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex4 StoreManagerController HTTP-GET Create action_)
 
 	<!-- mark:6-11 -->
 	````C#	
@@ -911,7 +914,7 @@ In this task, you will implement the HTTP-POST version of the Create action meth
 1.	Close the browser if needed, to return to the Visual Studio window. Open **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 1.	Replace **HTTP-POST Create** action method code with the following:
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex4 StoreManagerController HTTP- POST Create action_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex4 StoreManagerController HTTP- POST Create action_)
 
 	<!-- mark:2-28 -->
 	````C#
@@ -1000,7 +1003,7 @@ In this task, you will implement the HTTP-GET version of the Delete action metho
 1. The Delete controller action is exactly the same as the previous Store Details controller action: it queries the **album** object from the database using the **id** provided in the URL and returns the appropiate **View**. To do this, replace the HTTP-GET **Delete** action method code with the following:
 
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex5 Handling Deletion HTTP-GET Delete action_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex5 Handling Deletion HTTP-GET Delete action_)
 
 	<!-- mark:5-7 -->
 	````C#
@@ -1069,14 +1072,14 @@ In this task, you will implement the HTTP-POST version of the Delete action meth
 1.	Close the browser if needed, to return to the Visual Studio window. Open **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 1.	Replace **HTTP-POST Delete** action method code with the following:
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Handling Deletion HTTP-POST Delete action_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Handling Deletion HTTP-POST Delete action_)
 
 	<!-- mark:7-12 -->
 	````C#
 	//
 	// POST: /StoreManager/Delete/5
 	
-	 [HttpPost]
+	[HttpPost]
 	public ActionResult Delete(int id, FormCollection collection)
 	{
 	    var album = storeDB.Albums
@@ -1095,7 +1098,7 @@ In this task, you will implement the HTTP-POST version of the Delete action meth
 
 Because of Referential Integrity, a deletion of an **Album** could raise an exception if it has **OrderDetails** entries. To solve this, you should allow cascade deletes. So, when you delete an Album, it will delete all the OrderDetails entries for that album. In this task, you will activate deletion on cascade.
 
-	>**Note:** In this scenario you will delete an Album no matter if it has an order associated. Consider that in other application scenarios this could not be the correct action.
+>**Note:** In this scenario you will delete an Album no matter if it has an order associated. Consider that in other application scenarios this could not be the correct action.
 
 1.	On the Solution Explorer expand the **Models** folder and then double-click **StoreDB.edmx**. This opens the Entity Data Model designer.
 1.	Open the **Models/StoreDB.edmx** entity diagram. Right-click the relation between **Album** and **OrderDetail** and select **Properties**.
@@ -1179,7 +1182,7 @@ In this task, you will add Data Annotations to the Album Model that will make th
 	>**Note:** The line **\[DisplayFormat(ConvertEmptyStringToNull=false)\]** indicates that empty strings from the model won’t be converted to null when the data field is updated in the data source. 
 	>This setting will avoid an exception when the Entity Framework assigns null values to the model before Data Annotation validates the fields.
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex6 Album metadata partial class_ - CSharp)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex6 Album metadata partial class_)
 
 	<!-- mark:5-42 -->
 	````C#
