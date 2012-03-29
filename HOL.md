@@ -96,6 +96,7 @@ The following exercises make up this Hands-On Lab:
 1. [Adding a Create View](#Exercise4)
 1. [Handling Deletion](#Exercise5)
 1. [Adding Validation](#Exercise6)
+1. [Using Unobtrusive jQuery at Client Side](#Exercise7)
 
 > **Note:** Each exercise is accompanied by a starting solution. These solutions are missing some code sections that are completed through each exercise and therefore will not necessarily work if running them directly.
 Inside each exercise you will also find an end folder where you find the resulting solution you should obtain after completing the exercises. You can use this solution as a guide if you need additional help working through the exercises.
@@ -1259,6 +1260,195 @@ In this task, you will test that the Create and Edit pages validate fields, usin
 
 	_Validated fields in the Edit page_
 
+<a name="Exercise7" /> 
+### Exercise 7: Using Unobtrusive jQuery at Client Side ###
+
+In this exercise, you will learn how to enable MVC 4 Unobtrusive jQuery validation at client side. For that reason you will include jQuery libraries into the Master Page and enable unobtrusive jQuery globally.
+
+> **Note:** The Unobtrusive jQuery uses data-ajax prefix JavaScript to invoke action methods on the server rather than intrusively emitting inline client scripts.
+
+<a name="Ex7Task1" />
+#### Task 1 - Running the Application before Enabling Unobtrusive jQuery ####
+
+1. In this task, you will run the application before including jQuery in order to compare both validation models.
+
+1. Open the begin solution **MvcMusicStore.sln** at Source\Ex07-UnobtrusiveJavaScriptValidation\Begin.
+
+1.	Follow these steps to install the **NuGet** package dependencies.
+
+	>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
+
+	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
+
+	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**.
+
+	1.	After installing the package, type **Enable-PackageRestore**.
+
+	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
+
+1. Press **F5** to run the application.
+
+1. The project starts in the Home page. Browse **/StoreManager/Create** and click **Save** without filling the form to verify that you get validation messages:
+
+ 	![Client validation disabled](./images/Client-validation-disabled.png?raw=true "Client validation disabled")
+ 
+	_Client validation disabled_
+
+1. In the browser, open the **Create** view source code:
+
+	````HTML
+	...
+	<form action="/StoreManager/Create" id="form0" method="post">
+	<div class="validation-summary-errors" id="validationSummary">
+		<ul>
+			<li style="display:none"></li>
+		</ul>
+	</div>    
+	<fieldset>
+        <legend>Create Album</legend> 
+		 <p>
+			  <label for="Album_Title">Title</label>
+			  <input class="input-validation-error" id="Album_Title" name="Album.Title" type="text" value="" />
+			  <span class="field-validation-error" id="Album_Title_validationMessage">An Album Title is required</span>
+		 </p>            
+		 <p>
+			  <label for="Album_Price">Price</label> 
+			  <input class="input-validation-error" id="Album_Price" name="Album.Price" type="text" value="0" /> 
+			  <span class="field-validation-error" id="Album_Price_validationMessage">Price must be between 0.01 and 100.00</span>
+		 </p>
+	...
+	````
+
+<a name="Ex7Task2" />
+#### Task 2 - Enabling Client Validation from Web.config ####
+
+In this task, you will enable unobtrusive jQuery **client validation** from **Web.config** file, which is by default set to false in all new ASP.NET MVC 4 projects.
+
+1. Open **Web.Config** file at project root, and make sure that the **ClientValidationEnabled** key value is set to **true**.
+	
+	<!-- mark:8 -->
+	````XML
+	...
+	<configuration>
+	  <appSettings>
+		 <add key="webpages:Version" value="2.0.0.0" />
+		 <add key="webpages:Enabled" value="true" />
+		 <add key="PreserveLoginUrl" value="true" />
+		 <add key="ClientValidationEnabled" value="true" />
+		 <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+	</appSettings>
+	...
+	````
+	>
+	> **Note:** You can also enable client validation by code at Global.asax.cs to get the same results: 
+	>
+	> **HtmlHelper.ClientValidationEnabled = true;**
+	>
+	> Additionally, you can assign ClientValidationEnabled attribute into any controller to have a custom behavior.
+
+<a name="Ex7Task3" />
+#### Task 3 - Adding Unobtrusive jQuery to Master Page ####
+
+In this task, you will add the unobtrusive jQuery references into the Master Page.
+
+1. Open **_Layout.cshtml** at **Views\Shared**.
+
+1. Add MVC 4 script references to **jQuery**:
+
+	<!-- mark:9-11 -->
+	````XML
+	...
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>@ViewBag.Title</title>
+		<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
+		<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/css")" rel="stylesheet" type="text/css" />
+		<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")"></script>
+		<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/jquery-1.6.2.min.js")"></script>
+		<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/jquery.validate.min.js")"></script>
+		<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+	</head>
+	````
+
+	> **Note:** All these jQuery libraries are included in all MVC 4 new projects. You can find more libraries in the project's folder **/Scripts**.
+
+<a name="Ex7Task4" />
+#### Task 4 - Running the Application Using Unobtrusive jQuery Validation ####
+
+In this task, you will test that the **StoreManager** create view template performs client side validation using jQuery libraries when the user creates a new album.
+
+1. Press **F5** to run the application.
+
+1. The project starts in the Home page. Browse **/StoreManager/Create** and click **Save** without filling the form to verify that you get validation messages:
+
+ 	![Client validation with jQuery enabled](./images/Client-validation-with-jQuery-enabled.png?raw=true "Client validation with jQuery enabled")
+ 
+	_Client validation with jQuery enabled_
+
+1. In the browser, open the source code for Create view:
+
+	````HTML
+	...
+	<h2>Create</h2>
+
+	<form action="/StoreManager/Create" method="post">
+	<div class="validation-summary-errors">
+		<ul>
+			<li style="display:none"></li>
+		</ul>
+	</div>
+	<fieldset>
+		<legend>Create Album</legend>			  
+		<p>
+			  <label for="Album_Title">Title</label>
+			  <input class="input-validation-error" data-val="true" data-val-length="The field Title must be a string with a maximum length of 160." data-val-length-max="160" data-val-required="An Album Title is required" id="Album_Title" name="Album.Title" type="text" value="" />
+			  <span class="field-validation-error" data-valmsg-for="Album.Title" data-valmsg-replace="true">An Album Title is required</span>
+		 </p>            
+		 <p>
+			  <label for="Album_Price">Price</label> 
+			  <input class="input-validation-error" data-val="true" data-val-number="The field Price must be a number." data-val-range="Price must be between 0.01 and 100.00" data-val-range-max="100" data-val-range-min="0,01" data-val-required="Price is required" id="Album_Price" name="Album.Price" type="text" value="0" /> 
+			  <span class="field-validation-error" data-valmsg-for="Album.Price" data-valmsg-replace="true">Price must be between 0.01 and 100.00</span>
+		 </p>            
+		 <p>
+			  <label for="Album_AlbumArtUrl">Album Art URL</label>
+			  <input data-val="true" data-val-length="The field Album Art URL must be a string with a maximum length of 1024." data-val-length-max="1024" id="Album_AlbumArtUrl" name="Album.AlbumArtUrl" type="text" value="" />
+			  <span class="field-validation-valid" data-valmsg-for="Album.AlbumArtUrl" data-valmsg-replace="true"></span>
+		 </p>          
+	...
+	
+	````
+
+	> **Note:** For each client validation rule, Unobtrusive jQuery adds an attribute with data-val-_rulename_="_message_". Below is a list of tags that Unobtrusive jQuery inserts into the html input field to perform client validation:
+
+	> - Data-val
+	> - Data-val-number
+	> - Data-val-range
+	> - Data-val-range-min / Data-val-range-max
+	> - Data-val-required
+	> - Data-val-length
+	> - Data-val-length-max / Data-val-length-min
+	> 
+	> All the data values are filled with model **Data Annotation**. Then, all the logic that works at server side can be run at client side.
+	> For example, Price attribute has the following data annotation in the model: 
+	>
+	> ````C#
+	> [Required(ErrorMessage = "Price is required")]
+	> [Range(0.01, 100.00, ErrorMessage = "Price must be between 0.01 and 100.00")]
+	> public object Price { get; set; }
+	> ````
+	> After using Unobtrusive jQuery, the generated code is:
+	>
+	> ````HTML
+	> <input data-val="true"
+	> data-val-number="The field Price must be a number."
+	> data-val-range="Price must be between 0.01 and 100.00"
+	> data-val-range-max="100"
+	> data-val-range-min="0.01"
+	> data-val-required="Price is required"
+	> id="Album_Price" name="Album.Price" type="text" value="0" />
+	> ````  
+	
 ---
 
 <a name="Summary" />
