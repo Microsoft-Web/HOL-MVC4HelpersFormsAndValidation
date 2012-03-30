@@ -427,7 +427,7 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 
 In this task, you will register the HTML Helper with the application by modifying the application’s **Web.config** file.
 
-1.	Open the **Web.config** file from the Solution Explorer.
+1.	Open the **Web.config** file from the Solution Explorer, located in the **Views** folder.
 1.	Add a reference to the **MvcMusicStore.Helpers** namespace in the **pages** section.
 
 	<!-- mark:7 -->
