@@ -1361,7 +1361,7 @@ Additionally, you will add the necessary scripts references to make jQuery Unobt
 
 	> **Note:** All these jQuery libraries are included in MVC 4 new projects. You can find more libraries in the **/Scripts** folder of you project.
 	>
-	> In order to make this validation libraries work, you need to add a reference to the jQuery framework library. Since this reference is already added in the **_Layout.cshtml** file, you do not need to add it in this pasticular view.
+	> In order to make this validation libraries work, you need to add a reference to the jQuery framework library. Since this reference is already added in the **_Layout.cshtml** file, you do not need to add it in this particular view.
 
 <a name="Ex7Task3" />
 #### Task 3 - Running the Application Using Unobtrusive jQuery Validation ####
