@@ -1,11 +1,9 @@
 ﻿<a name="HOLTop" />
-# ASP.NET MVC Helpers, Forms and Validation #
+# ASP.NET MVC 4 Helpers, Forms and Validation #
 ---
 
 <a name="Overview" />
 ## Overview ##
-
->**Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC**. If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hands-on Lab.
 
 In **ASP.NET MVC Models and Data Access** Hands-on Lab, you have been loading and displaying data from the database. In this Hands-on Lab, you will add to the **Music Store** application the ability to edit that data.
 
@@ -14,6 +12,8 @@ With that goal in mind, you will first create the controller that will support t
 Afterwards, you will add the Edit and Create Views that will let you alter the albums in the database, with the help of form elements like dropdowns.
 
 Lastly, you will let users delete an album and also you will prevent them from entering wrong data by validating their input.
+
+>**Note:** This Hands-on Lab assumes you have basic knowledge of **ASP.NET MVC**. If you have not used **ASP.NET MVC** before, we recommend you to go over **ASP.NET MVC Fundamentals** Hands-on Lab.
 
 <a name="Objectives" />
 ### Objectives ###
@@ -35,7 +35,6 @@ In this Hands-On Lab, you will learn how to:
 You must have the following items to complete this lab:
 
 - Visual Studio 11 Express Beta for Web
-
 
 <a name="Setup" />
 ### Setup ###
@@ -427,7 +426,7 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 
 In this task, you will register the HTML Helper with the application by modifying the application’s **Web.config** file.
 
-1.	Open the **Web.config** file from the Solution Explorer, located in the **Views** folder.
+1.	Open the **Web.config** file from the Solution Explorer.
 1.	Add a reference to the **MvcMusicStore.Helpers** namespace in the **pages** section.
 
 	<!-- mark:7 -->
@@ -1263,16 +1262,16 @@ In this task, you will test that the Create and Edit pages validate fields, usin
 <a name="Exercise7" /> 
 ### Exercise 7: Using Unobtrusive jQuery at Client Side ###
 
-In this exercise, you will learn how to enable MVC 4 Unobtrusive jQuery validation at client side. For that reason you will include jQuery libraries into the Master Page and enable unobtrusive jQuery globally.
+In this exercise, you will learn how to enable MVC 4 Unobtrusive jQuery validation at client side.
 
 > **Note:** The Unobtrusive jQuery uses data-ajax prefix JavaScript to invoke action methods on the server rather than intrusively emitting inline client scripts.
 
 <a name="Ex7Task1" />
 #### Task 1 - Running the Application before Enabling Unobtrusive jQuery ####
 
-1. In this task, you will run the application before including jQuery in order to compare both validation models.
+In this task, you will run the application before including jQuery in order to compare both validation models.
 
-1. Open the begin solution **MvcMusicStore.sln** at Source\Ex07-UnobtrusiveJavaScriptValidation\Begin.
+1. Open the begin solution **MvcMusicStore.sln** at **Source\Ex07-UnobtrusivejQueryValidation\Begin**.
 
 1.	Follow these steps to install the **NuGet** package dependencies.
 
@@ -1320,13 +1319,14 @@ In this exercise, you will learn how to enable MVC 4 Unobtrusive jQuery validati
 	````
 
 <a name="Ex7Task2" />
-#### Task 2 - Enabling Client Validation from Web.config ####
+#### Task 2 - Enabling Unobtrusive Client Validation ####
 
-In this task, you will enable unobtrusive jQuery **client validation** from **Web.config** file, which is by default set to false in all new ASP.NET MVC 4 projects.
+In this task, you will enable jQuery **unobtrusive client validation** from **Web.config** file, which is by default set to false in all new ASP.NET MVC 4 projects.
+Additionally, you will add the necessary scripts references to make jQuery Unobtrusive Client Validation work.
 
-1. Open **Web.Config** file at project root, and make sure that the **ClientValidationEnabled** key value is set to **true**.
+1. Open **Web.Config** file at project root, and make sure that the **ClientValidationEnabled** and **UnobtrusiveJavaScriptEnabled** keys values are set to **true**.
 	
-	<!-- mark:8 -->
+	<!-- mark:7-8 -->
 	````XML
 	...
 	<configuration>
@@ -1339,42 +1339,32 @@ In this task, you will enable unobtrusive jQuery **client validation** from **We
 	</appSettings>
 	...
 	````
-	>
+	
 	> **Note:** You can also enable client validation by code at Global.asax.cs to get the same results: 
 	>
 	> **HtmlHelper.ClientValidationEnabled = true;**
 	>
 	> Additionally, you can assign ClientValidationEnabled attribute into any controller to have a custom behavior.
 
-<a name="Ex7Task3" />
-#### Task 3 - Adding Unobtrusive jQuery to Master Page ####
+1. Open **Create.cshtml** at **Views\StoreManager**.
 
-In this task, you will add the unobtrusive jQuery references into the Master Page.
+1. Make sure the following script files, **jquery.validate** and  **jquery.validate.unobtrusive**, are referenced in the view.
 
-1. Open **_Layout.cshtml** at **Views\Shared**.
-
-1. Add MVC 4 script references to **jQuery**:
-
-	<!-- mark:9-11 -->
-	````XML
+	<!-- mark:4-5 -->
+	````CSHTML
 	...
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>@ViewBag.Title</title>
-		<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/css")" rel="stylesheet" type="text/css" />
-		<link href="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Content/themes/base/css")" rel="stylesheet" type="text/css" />
-		<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/js")"></script>
-		<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/jquery-1.6.2.min.js")"></script>
-		<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/jquery.validate.min.js")"></script>
-		<script src="@System.Web.Optimization.BundleTable.Bundles.ResolveBundleUrl("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
-	</head>
+	<h2>Create</h2>
+
+	<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
 	````
 
-	> **Note:** All these jQuery libraries are included in all MVC 4 new projects. You can find more libraries in the project's folder **/Scripts**.
+	> **Note:** All these jQuery libraries are included in MVC 4 new projects. You can find more libraries in the **/Scripts** folder of you project.
+	>
+	> In order to make this validation libraries work, you need to add a reference to the jQuery framework library. Since this reference is already added in the **_Layout.cshtml** file, you do not need to add it in this pasticular view.
 
-<a name="Ex7Task4" />
-#### Task 4 - Running the Application Using Unobtrusive jQuery Validation ####
+<a name="Ex7Task3" />
+#### Task 3 - Running the Application Using Unobtrusive jQuery Validation ####
 
 In this task, you will test that the **StoreManager** create view template performs client side validation using jQuery libraries when the user creates a new album.
 
@@ -1420,7 +1410,7 @@ In this task, you will test that the **StoreManager** create view template perfo
 	````
 
 	> **Note:** For each client validation rule, Unobtrusive jQuery adds an attribute with data-val-_rulename_="_message_". Below is a list of tags that Unobtrusive jQuery inserts into the html input field to perform client validation:
-
+	>
 	> - Data-val
 	> - Data-val-number
 	> - Data-val-range
@@ -1463,3 +1453,4 @@ By completing this Hands-On Lab you have learned how to enable users to change t
 - A shared editor template for similar View templates like Create and Edit
 - Form elements like drop-downs
 - Data annotations for Model validation
+- Client Side Validation using jQuery Unobtrusive library
