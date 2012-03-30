@@ -622,7 +622,7 @@ In this task, you will create an Edit View template that will later display the 
 
 In this task, you will change the default View template to display the Album properties.
 
-1.	Add an **Html.EditorFor()** helper to render a default HTML editing form for the Album. You can also change the legend to **Edit Album**.
+1.	Add an **Html.EditorFor()** helper after the **\<legend\>** tag to render a default HTML editing form for the Album. You can also change the legend to **Edit Album**.
 
 	<!-- mark:1-4 -->
 	````HTML
