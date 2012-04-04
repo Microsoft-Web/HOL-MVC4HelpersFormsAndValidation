@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Lab xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/ContentFramework.Core.Models">
-  <Id>ASPNETMVC4FormsandValidation</Id>
+  <Id>ASPNETMVC4HelpersFormsandValidation</Id>
   <Author>
     <Name>.</Name>
   </Author>
-  <Description>In ASP.NET MVC 4 Models and Data Access Hand-on Lab, you have been loading data from the database and displaying it. In this Hands-on Lab, you will add to the Music Store application, the ability to edit that data.</Description>  
+  <Description>In ASP.NET MVC 4 Helpers, Forms and Validation Hand-on Lab, you have been loading data from the database and displaying it. In this Hands-on Lab, you will add to the Music Store application, the ability to edit that data.</Description>  
   <Document ConversionType="Html">.\HOL.md</Document>
   <Title>ASP.NET MVC 4 Helpers, Forms and Validation</Title>
   <Version>2.0.0</Version>
