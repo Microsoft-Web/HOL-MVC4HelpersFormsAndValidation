@@ -112,7 +112,7 @@ In this exercise, you will learn how to create a new controller to support CRUD 
 In this task, you will create a new controller called **StoreManagerController** to support CRUD operations.
 
 1. Start Microsoft Visual Studio 11 from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
-1. In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to **Source\Ex01-CreatingTheStoreManagerController\Begin**, select **MvcMusicStore.sln** and click **Open**. You can alternativelly continue working with the last solution of the previous hands-on lab _Models and Data Access with Database First_.
+1. In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to **Source\Ex01-CreatingTheStoreManagerController\Begin**, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the last solution of the previous hands-on lab _Models and Data Access with Database First_.
 
 1.	Follow these steps to install the **NuGet** package dependencies.
 
@@ -137,7 +137,7 @@ In this task, you will create a new controller called **StoreManagerController**
 
 	A new Controller class is generated. Since you indicated to add actions for read/write, stub methods for those, common CRUD actions are created with TODO comments filled in, prompting to include the application specific logic.
 
-<a name="Ex01Task4" />
+<a name="Ex01Task2" />
 #### Task 2 – Customizing the StoreManager Index####
 
 In this task, you will customize the StoreManager Index action method to return a View with the list of albums from the database.
@@ -335,7 +335,7 @@ In this task, you will test that the **StoreManager** **Index** View template di
 
 	![Browsing the list of albums](images/browsing-the-list-of-albums.png?raw=true "Browsing the list of albums")
 
-	_Browswing the list of albums_
+	_Browsing the list of albums_
 
 <a name="Exercise2" />
 ### Exercise 2: Adding an HTML Helper###
@@ -358,7 +358,7 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 
 1. Start Visual Studio 11 Express Beta for Web from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
 
-1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex02-AddingAnHTMLHelper\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternativelly continue working with the end solution of Exercise 1.
+1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex02-AddingAnHTMLHelper\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the end solution of Exercise 1.
 
 1.	Follow these steps to install the **NuGet** package dependencies.
 
@@ -504,7 +504,7 @@ In order to build and manage the intended Edit form, you will first need to pass
 In this task, you will create a new StoreManagerViewModel class to help manage all of the above data. This class will be used within both Edit and Create action methods.
 
 1. Start Visual Studio 11 Express Beta for Web from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
-1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex03-CreatingTheEditView\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternativelly continue working with the solution of the previous exercise.
+1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex03-CreatingTheEditView\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the solution of the previous exercise.
 
 1.	Follow these steps to install the **NuGet** package dependencies.
 
@@ -512,7 +512,7 @@ In this task, you will create a new StoreManagerViewModel class to help manage a
 
 	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
 
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternativelly install the NuGet Power Tools from the **Manage NuGet Packages** window. 
+	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternatively install the NuGet Power Tools from the **Manage NuGet Packages** window. 
 
 	1.	After installing the package, type **Enable-PackageRestore**.
 
@@ -674,7 +674,7 @@ Since the exact same form fields for Album Edit will be needed to handle the Alb
 	_Adding a partial view_
 
 
-<a name="Ex03Task4" />
+<a name="Ex03Task7" />
 #### Task 7 - Implementing drop-downs on the Album Editor Template ####
 
 In this task, you will add drop-downs to the View template created in the last task, so that the user can select from a list of Artists and Genres.
@@ -800,9 +800,7 @@ In this task, you will test that the **StoreManager Edit** View page actually sa
 
 	_Updating an Album_
 
-
 <a name="Exercise4" />
-
 ### Exercise 4: Adding a Create View###
 
 Now that the **StoreManagerController** supports the **Edit** ability, in this exercise you will learn how to add a Create View template to let store managers to add new Albums to the application.
@@ -821,7 +819,7 @@ In this task, you will implement the HTTP-GET version of the Create action metho
 
 1. Start Visual Studio 11 Express Beta for Web from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
 
-1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex04-AddingACreateView\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternativelly continue working with the solution of the previous exercise.
+1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex04-AddingACreateView\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the solution of the previous exercise.
 
 1.	Follow these steps to install the **NuGet** package dependencies.
 
@@ -829,7 +827,7 @@ In this task, you will implement the HTTP-GET version of the Create action metho
 
 	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
 
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternativelly install the NuGet Power Tools from the **Manage NuGet Packages** window. 
+	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternatively install the NuGet Power Tools from the **Manage NuGet Packages** window. 
 
 	1.	After installing the package, type **Enable-PackageRestore**.
 
@@ -987,7 +985,7 @@ The ability to delete albums is not yet implemented. This is what this exercise 
 In this task, you will implement the HTTP-GET version of the Delete action method to retrieve the album’s information.
 
 1. Start Microsoft Visual Studio 11 from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
-1. In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to **Source\Ex05-HandlingDeletion\Begin**, select **MvcMusicStore.sln** and click **Open**. You can alternativelly continue working with the last solution.
+1. In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to **Source\Ex05-HandlingDeletion\Begin**, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the last solution.
 
 1.	Follow these steps to install the **NuGet** package dependencies.
 
@@ -1000,7 +998,7 @@ In this task, you will implement the HTTP-GET version of the Delete action metho
 	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
 
 1. Open **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
-1. The Delete controller action is exactly the same as the previous Store Details controller action: it queries the **album** object from the database using the **id** provided in the URL and returns the appropiate **View**. To do this, replace the HTTP-GET **Delete** action method code with the following:
+1. The Delete controller action is exactly the same as the previous Store Details controller action: it queries the **album** object from the database using the **id** provided in the URL and returns the appropriate **View**. To do this, replace the HTTP-GET **Delete** action method code with the following:
 
 
 	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex5 Handling Deletion HTTP-GET Delete action_)
@@ -1142,7 +1140,7 @@ In this task, you will add Data Annotations to the Album Model that will make th
 
 1. Start Microsoft Visual Studio 11 from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
 
-1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex06-AddingValidation\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternativelly continue working with the solution of the previous exercise.
+1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex06-AddingValidation\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the solution of the previous exercise.
 
 1.	Follow these steps to install the **NuGet** package dependencies.
 
@@ -1150,7 +1148,7 @@ In this task, you will add Data Annotations to the Album Model that will make th
 
 	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
 
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternativelly install the NuGet Power Tools from the **Manage NuGet Packages** window. 
+	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternatively install the NuGet Power Tools from the **Manage NuGet Packages** window. 
 
 	1.	After installing the package, type **Enable-PackageRestore**.
 
