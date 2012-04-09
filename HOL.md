@@ -501,7 +501,7 @@ In order to build and manage the intended Edit form, you will first need to pass
 1.	A List of all Artists to populate the Artist dropdown list
 
 
-In this task, you will create a new StoreManagerViewModel class to help manage all of the above data. This class will be used within both Edit and Create action methods.
+In this task, you will create a new **StoreManagerViewModel** class to help manage all of the above data. This class will be used within both Edit and Create action methods.
 
 1. Start Visual Studio 11 Express Beta for Web from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
 1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex03-CreatingTheEditView\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the solution of the previous exercise.
@@ -538,7 +538,7 @@ In this task, you will create a new StoreManagerViewModel class to help manage a
 
 1.	Add the **Album**, **Artists** and **Genres** properties.
 
-	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex3 StoreManagerViewModel properties_)
+	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex3 **StoreManagerViewModel** properties_)
 
 	<!-- mark:3-5 -->
 	````C#
@@ -558,7 +558,7 @@ In this task, you will create a new StoreManagerViewModel class to help manage a
 <a name="Ex03Task2" />
 #### Task 2 - Implementing the HTTP-GET Edit Action Method ####
 
-In this task, you will implement the HTTP-GET version of the Edit action method to retrieve the appropriate Album from the database, as well as a list of all Genres and Artists. It will package this data up into the StoreManagerViewModel object defined in the last step, which will then be passed to a View template to render the response with.
+In this task, you will implement the HTTP-GET version of the Edit action method to retrieve the appropriate Album from the database, as well as a list of all Genres and Artists. It will package this data up into the **StoreManagerViewModel** object defined in the last step, which will then be passed to a View template to render the response with.
 
 1.	Open the **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 1.	Add the following directive to **MvcMusicStore.ViewModels**. 
@@ -610,7 +610,7 @@ In this task, you will create an Edit View template that will later display the 
 
 	_Adding an Edit view_
 
-1.	The generated Edit View template doesn’t include any fields because none of the properties in the StoreManagerViewModel are simple types like strings and integers.
+1.	The generated Edit View template doesn’t include any fields because none of the properties in the **StoreManagerViewModel** are simple types like strings and integers.
 
 	![edit-view-without-fields](images/edit-view-without-fields.png?raw=true)
 
@@ -803,7 +803,7 @@ In this task, you will test that the **StoreManager Edit** View page actually sa
 <a name="Exercise4" />
 ### Exercise 4: Adding a Create View###
 
-Now that the **StoreManagerController** supports the **Edit** ability, in this exercise you will learn how to add a Create View template to let store managers to add new Albums to the application.
+Now that the **StoreManagerController** supports the **Edit** ability, in this exercise you will learn how to add a Create View template to let store managers add new Albums to the application.
 
 Like you did with the Edit functionality, you will implement the Create scenario using two separate methods within the **StoreManagerController** class:
 
@@ -815,7 +815,7 @@ Like you did with the Edit functionality, you will implement the Create scenario
 <a name="Ex04Task1" />
 #### Task 1 - Implementing the HTTP-GET Create action method ####
 
-In this task, you will implement the HTTP-GET version of the Create action method to retrieve a list of all Genres and Artists, package this data up into a StoreManagerViewModel object, which will then be passed to a View template.
+In this task, you will implement the HTTP-GET version of the Create action method to retrieve a list of all Genres and Artists, package this data up into a **StoreManagerViewModel** object, which will then be passed to a View template.
 
 1. Start Visual Studio 11 Express Beta for Web from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
 
@@ -1096,7 +1096,7 @@ In this task, you will implement the HTTP-POST version of the Delete action meth
 
 Because of Referential Integrity, a deletion of an **Album** could raise an exception if it has **OrderDetails** entries. To solve this, you should allow cascade deletes. So, when you delete an Album, it will delete all the OrderDetails entries for that album. In this task, you will activate deletion on cascade.
 
->**Note:** In this scenario you will delete an Album no matter if it has an order associated. Consider that in other application scenarios this could not be the correct action.
+>**Note:** In this scenario you will delete an Album even if it has an order associated. Consider that in other application scenarios this could not be the correct action.
 
 1.	On the Solution Explorer expand the **Models** folder and then double-click **StoreDB.edmx**. This opens the Entity Data Model designer.
 1.	Open the **Models/StoreDB.edmx** entity diagram. Right-click the relation between **Album** and **OrderDetail** and select **Properties**.
