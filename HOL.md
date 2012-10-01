@@ -34,54 +34,11 @@ In this Hands-On Lab, you will learn how to:
 
 You must have the following items to complete this lab:
 
-- Visual Studio 11 Express Beta for Web
+- [Microsoft Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or superior (read [Appendix A](#AppendixA) for instructions on how to install it).
 
-<a name="Setup" />
-### Setup ###
+### Installing Code Snippets ###
 
-#### Installing Code Snippets####
-For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run **.\Source\Assets\CodeSnippets.vsi** file.
-
-####Installing Web Platform Installer####
-This section assumes that you don't have some or all the system requirements installed. In case you do, you can simply skip this section.
-
-Microsoft Web Platform Installer (WebPI) is a tool that manages the installation of the prerequisites for this Lab.
-
-> **Note:** As well as the Microsoft Web Platform, WebPI can also install many of the open source applications that are available like Umbraco, Kentico, DotNetNuke and many more.  These are very useful for providing a foundation from which to customize an application to your requirements, dramatically cutting down your development time.
-
-Please follow these steps to downloads and install Microsoft Visual Studio 11 Express Beta for Web:
-
-1. Install **Visual Studio 11 Express Beta for Web**. To do this, Navigate to [http://www.microsoft.com/web/gallery/install.aspx?appid=VWD11_BETA&prerelease=true](http://www.microsoft.com/web/gallery/install.aspx?appid=VWD11_BETA&prerelease=true) using a web browser. 
-
-	![Web Platform Installer 4.0 window](./images/Microsoft-Web-Platform-Installer-4.png?raw=true "Web Platform Installer 4.0 download")
-
-	_Web Platform Installer 4.0 download_
-
-1. The Web Platform Installer launches and shows Visual Studio 11 Express Beta for Web Installation. Click on **Install**.
-
- 	![Visual Studio 11 Express Beta for Web Installer window](./images/Microsoft-VS-11-Install.png?raw=true "Visual Studio 11 Express Beta for Web Installer window")
- 
-	_Visual Studio 11 Express Beta for Web Installer window_
-
-1. The **Web Platform Installer** displays the list of software to be installed. Accept by clicking **I Accept**.
-
- 	![Web Platform Installer window](./images/Microsoft-Web-Platform-Installer-Prerequisites.png?raw=true "Web Platform Installer window")
- 
-	_Web Platform Installer window_
-
-1. The appropriate components will be downloaded and installed.
-
- 	![Web Platform Installation - Download progress](./images/Web-Platform-Installation-Download-progress.png?raw=true "Web Platform Installation - Download progress")
- 
-	_Web Platform Installation - Download progress_
-
-1. The **Web Platform Installer** will resume downloading and installing the products. When this process is finished, the Installer will show the list of all the software installed. Click **Finish**.
-
- 	![Web Platform Installer](./images/Web-Platform-Installer.png?raw=true "Web Platform Installer")
- 
-	_Web Platform Installer_
-
-1. Finally the Web Platform Installer shows the installed products. Click **Finish** to finish the setup process.
+For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run **.\Source\Setup\CodeSnippets.vsi** file.
 
 ---
 
@@ -107,29 +64,19 @@ Estimated time to complete this lab: **60 minutes**
 
 In this exercise, you will learn how to create a new controller to support CRUD operations, customize its Index action method to return a list of albums from the database and finally generating an Index View template taking advantage of ASP.NET MVC’s scaffolding feature to display the albums’ properties in an HTML table.
 
-<a name="Ex01Task1" />
+<a name="Ex1Task1" />
 ####Task 1 - Creating the StoreManagerController####
 In this task, you will create a new controller called **StoreManagerController** to support CRUD operations.
 
-1. Start Microsoft Visual Studio 11 from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
-1. In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to **Source\Ex01-CreatingTheStoreManagerController\Begin**, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the last solution of the previous hands-on lab _Models and Data Access with Database First_.
+1. Open **Visual Studio 2012** and open the **FormsLab-Ex1-Begin.sln** solution located in the **Source\Ex1-CreatingTheStoreManagerController\Begin** folder of this lab.
 
-1.	Follow these steps to install the **NuGet** package dependencies.
+1. In the Solution Explorer, click the **WebFormsLab** project and select **Manage NuGet Packages**.
 
-	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
+1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**.
+1. Build the solution by clicking **Build** | **Build Solution**.
 
-	1.	After installing the package, type **Enable-PackageRestore**.
-
-	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
-
-	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
-	
-	>For more information, see this article: <http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages>.
-
-
-1. Add the new controller. To do this, right-click the **Controllers** folder within the Solution Explorer, select **Add** and then the **Controller** command. Change the **Controller** **Name** to **StoreManagerController** and make sure the option **Controller with empty read/write actions** is selected. Click **Add**.
+1. Add a new controller. To do this, right-click the **Controllers** folder within the Solution Explorer, select **Add** and then the **Controller** command. Change the **Controller** **Name** to **StoreManagerController** and make sure the option **MVC controller with empty read/write actions** is selected. Click **Add**.
 
 	 ![Add controller dialog](images/add-controller-dialog.png?raw=true "Add controller dialog")
 
@@ -137,18 +84,19 @@ In this task, you will create a new controller called **StoreManagerController**
 
 	A new Controller class is generated. Since you indicated to add actions for read/write, stub methods for those, common CRUD actions are created with TODO comments filled in, prompting to include the application specific logic.
 
-<a name="Ex01Task2" />
+<a name="Ex1Task2" />
 #### Task 2 – Customizing the StoreManager Index####
 
 In this task, you will customize the StoreManager Index action method to return a View with the list of albums from the database.
 
-1.	In the StoreManagerController class, add a _using_ directive to MvcMusicStore.Models:
+1.	In the StoreManagerController class, add the following  _using_ directives.
 
 	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 using MvcMusicStore_)
 
-	<!-- mark:2 -->
+	<!-- mark:1,2 -->
 	````C#
-	using System.Web.Mvc;
+	using System.Data;
+	using System.Data.Entity;
 	using MvcMusicStore.Models;
 	````
 
@@ -160,7 +108,7 @@ In this task, you will customize the StoreManager Index action method to return 
 	````C#
 	public class StoreManagerController : Controller
 	{
-		MusicStoreEntities storeDB = new MusicStoreEntities();
+		private MusicStoreEntities db = new MusicStoreEntities();
 	````
 
 1.	Implement the StoreManagerController Index action to return a View with the list of albums. 
@@ -176,16 +124,15 @@ In this task, you will customize the StoreManager Index action method to return 
 
 	public ActionResult Index()
 	{
-		 var albums = storeDB.Albums
-			  .Include("Genre").Include("Artist")
-			  .ToList();
+		var albums = this.db.Albums.Include(a => a.Genre).Include(a => a.Artist)
+			 .OrderBy(a => a.Price);
 
-		 return View(albums);
+		return this.View(albums.ToList());
 	}
 
 	````
 
-<a name="Ex02Task3" />
+<a name="Ex1Task3" />
 #### **Task 3 - Creating the Index View**  ####
 
 In this task, you will create the Index View template to display the list of albums returned by the **StoreManager** Controller.
@@ -205,7 +152,7 @@ In this task, you will create the Index View template to display the list of alb
 	_Adding an Index View_
 
 
-<a name="Ex01Task4" />
+<a name="Ex1Task4" />
 #### Task 4 - Customizing the scaffold of the Index View####
 
 In this task, you will adjust the simple View template created with ASP.NET MVC scaffolding feature to have it display the fields you want.
@@ -219,7 +166,6 @@ In this task, you will adjust the simple View template created with ASP.NET MVC 
 
 	@{
 		 ViewBag.Title = "Index";
-		 Layout = "~/Views/Shared/_Layout.cshtml";
 	}
 
 	<h2>Index</h2>
@@ -247,59 +193,65 @@ In this task, you will adjust the simple View template created with ASP.NET MVC 
 			  <th></th>
 		 </tr>
 
-		@foreach (var item in Model) {
-			 <tr>
-				  <td>
-						@Html.DisplayFor(modelItem => item.GenreId)
-				  </td>
-				  <td>
-						@Html.DisplayFor(modelItem => item.ArtistId)
-				  </td>
-				  <td>
-						@Html.DisplayFor(modelItem => item.Title)
-				  </td>
-				  <td>
-						@Html.DisplayFor(modelItem => item.Price)
-				  </td>
-				  <td>
-						@Html.DisplayFor(modelItem => item.AlbumArtUrl)
-				  </td>
-				  <td>
-						@Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
-						@Html.ActionLink("Details", "Details", new { id=item.AlbumId }) |
-						@Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
-				  </td>
-			 </tr>
-		}
-	</table>
-	````
-
-1.	Replace the **\<table\>** code with the following code to display only the **Album Title**, **Artist**, and **Genre** fields. This deletes the **AlbumId**, **Price** and **Album Art URL** columns. Also, it changes GenreId and ArtistId columns to display their linked class properties of **Artist.Name** and **Genre.Name**, and removes the **Details** link.
-	<!-- mark:1-27 -->
-	````HTML
-	<table>
+	@foreach (var item in Model) {
 		 <tr>
-			  <th></th>
-			  <th>Title</th>            
-			  <th>Artist</th>            
-			  <th>Genre</th>                
-		 </tr>
-
-		@foreach (var item in Model) {
-		 <tr>
-				<td>
-					@Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
-				
-					@Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
+			  <td>
+					@Html.DisplayFor(modelItem => item.GenreId)
+			  </td>
+			  <td>
+					@Html.DisplayFor(modelItem => item.ArtistId)
 			  </td>
 			  <td>
 					@Html.DisplayFor(modelItem => item.Title)
 			  </td>
 			  <td>
-					@Html.DisplayFor(modelItem => item.Artist.Name)
+					@Html.DisplayFor(modelItem => item.Price)
+			  </td>
+			  <td>
+					@Html.DisplayFor(modelItem => item.AlbumArtUrl)
+			  </td>
+			  <td>
+					@Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
+					@Html.ActionLink("Details", "Details", new { id=item.AlbumId }) |
+					@Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
+			  </td>
+		 </tr>
+	}
+
+	</table>
+	````
+
+1.	Replace the **\<table\>** code with the following code to display only the **Genre**, **Artist**, **Album Title**, and **Price** fields. This deletes the **AlbumId** and **Album Art URL** columns. Also, it changes GenreId and ArtistId columns to display their linked class properties of **Artist.Name** and **Genre.Name**, and removes the **Details** link.
+
+	<!-- mark:1-39 -->
+	````HTML
+	<table>
+		<tr>
+		  <th></th>
+		  <th>Genre</th>
+		  <th>Artist</th>
+		  <th>Title</th>
+		  <th>Price</th>
+		</tr>
+
+		@foreach (var item in Model) {
+		 <tr>
+			  <td>
+					@Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
+				
+					@Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
 			  </td>
 			  <td>
 					@Html.DisplayFor(modelItem => item.Genre.Name)
+			  </td>
+			  <td>
+					@Html.DisplayFor(modelItem => item.Artist.Name)
+			  </td>
+			  <td>
+					@Html.DisplayFor(modelItem => item.Title)
+			  </td>
+			  <td>
+					@Html.DisplayFor(modelItem => item.Price)
 			  </td>
 		 </tr>
 		}
@@ -313,20 +265,13 @@ In this task, you will adjust the simple View template created with ASP.NET MVC 
 	@model IEnumerable<MvcMusicStore.Models.Album>
 	@{
 		ViewBag.Title = "Store Manager - All Albums";
-		Layout = "~/Views/Shared/_Layout.cshtml";
 	}
+	
 	<h2>Albums</h2>
-
 	````
 
-1.	Also update the link to create a new Album changing its text.
 
-	<!-- mark:1 -->
-	````HTML
-	@Html.ActionLink("Create New Album", "Create")
-	````
-
-<a name="Ex01Task5" />
+<a name="Ex1Task5" />
 #### Task 5 - Running the Application####
 In this task, you will test that the **StoreManager** **Index** View template displays a list of albums according to the design of the previous steps.
 
@@ -349,127 +294,80 @@ In the following figure, you can see how the format is modified because of the l
 _Browsing the list of Albums with not truncated text_
 
 
-<a name="Ex02Task1" />
+<a name="Ex2Task1" />
 #### Task 1 - Extending the HTML Helper####
 
 In this task, you will add a new method **Truncate** to the **HTML** object exposed within ASP.NET MVC Views. To do this, you will implement an **extension method** to the built-in **System.Web.Mvc.HtmlHelper** class provided by ASP.NET MVC.
 
 >**Note:** To read more about **Extension Methods**, please visit this msdn article. <http://msdn.microsoft.com/en-us/library/bb383977.aspx>.
 
-1. Start Visual Studio 11 Express Beta for Web from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
+1. Open **Visual Studio 2012** and open the **FormsLab-Ex2-Begin.sln** solution located in the **Source\Ex2-AddingAnHTMLHelper\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex02-AddingAnHTMLHelper\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the end solution of Exercise 1.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
 
-1.	Follow these steps to install the **NuGet** package dependencies.
+	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
-	>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
+	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
-	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
+1. Open StoreManager's Index View. To do this, in the Solution Explorer expand the **Views** folder, then the **StoreManager** and open the **Index.cshtml** file.
 
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**.
+1.	Add the following code below the **@model** directive to define the **Truncate** helper method.
 
-	1.	After installing the package, type **Enable-PackageRestore**.
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex2 TruncateHelper_)
 
-	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
-
-1.	Add a new directory **Helpers** to place the new extension method. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project, then **Add**, and **New Folder.**
-
-	![Adding Helpers' folder](images/add-new-folder.png?raw=true "Adding Helpers' folder")
-	
-	_Adding Helpers' folder_
-
-1.	Rename the folder to **Helpers**.
-
-	![Helpers folder](images/helpers-folder.png?raw=true "Helpers folder")
-
-	_Helpers folder_
-
-1. Add a new class **HtmlHelpers** in the **Helpers** folder. To do this, right-click the **Helpers** folder, select **Add** and then **New Item**. In the **Add New Item** dialog, select the **Code** item under **Visual C#**, change the name to **HtmlHelpers.cs** and click **Add**.
-
-	![Adding the Album class](images/adding-the-album-class.png?raw=true "Adding the Album class")
-	
-	_Adding the Album class_
-
-1.	Add a using directive to **System.Web.Mvc** and a new method to the class. Because of extension methods definition, HtmlHelpers and the new method need to be static. Replace with the following code:
-
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex2 TruncateMethod_)
-
-	<!-- mark:5-23 -->
+	<!-- mark:3-10 -->
 	````C#
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Web;	
-	using System.Web.Mvc;
-	
-	namespace MvcMusicStore.Helpers
+	@model IEnumerable<MvcMusicStore.Models.Album>
+
+	@helper Truncate(string input, int length)
 	{
-	    public static class HtmlHelpers
-	    {
-	        public static string Truncate(this HtmlHelper helper, string input, int length)
-	        {
-	            if (input.Length <= length)
-	            {
-	                return input;
-	            }
-	            else
-	            {
-	                return input.Substring(0, length) + "...";
-	            }
-	        }
-	    }
+		 if (input.Length <= length) {
+			  @input
+		 } else {
+			  @input.Substring(0, length)<text>...</text>
+		 }
+	} 
+
+	@{
+		 ViewBag.Title = "Store Manager - All Albums";
 	}
+
+	<h2>Albums</h2>
 	````
 
-<a name="Ex02Task2" />
-#### Task 2 - Registering the HTML Helper####
-
-In this task, you will register the HTML Helper with the application by modifying the application’s **Web.config** file.
-
-1.	Open the **Web.config** file from the Solution Explorer, located in the **Views** folder.
-1.	Add a reference to the **MvcMusicStore.Helpers** namespace in the **pages** section.
-
-	<!-- mark:7 -->
-	````XML
-	<pages>
-      <namespaces>
-	     <add namespace="System.Web.Mvc" />
-	     <add namespace="System.Web.Mvc.Ajax" />
-	     <add namespace="System.Web.Mvc.Html" />
-	     <add namespace="System.Web.Routing" />
-        <add namespace="MvcMusicStore.Helpers" />
-      </namespaces>
-    </pages>
-	````
-
-	>**Note:**  Another aproach would be to add an import directive in all the pages that need it:
-	>
-	>````C#
-	> @Import Namespace="MvcMusicStore.Helpers" 
-	>````
-	> Although, by adding the reference in the Web.config file, it will be available for all pages.
-	>You will find more information about import directive in this msdn article <http://msdn.microsoft.com/en-us/library/eb44kack%28VS.71%29.aspx>.
-
-<a name="Ex02Task03" />
-#### Task 3 - Truncating Text in the Page####
+<a name="Ex2Task2" />
+#### Task 2 - Truncating Text in the Page####
 
 In this task, you will use the **Truncate** method to truncate the text in the View template.
 
 1. Open StoreManager's Index View. To do this, in the Solution Explorer expand the **Views** folder, then the **StoreManager** and open the **Index.cshtml** file.
-1. Replace the lines that show the Album's **Title** and **Artist Name**. To do this, replace the following lines:
-	
-	<!-- mark:1-7 -->
+1. Replace the lines that show the **Artist Name** and Album's **Title**. To do this, replace the following lines.
+
+	<!-- mark:11,14 -->
 	````HTML
-	<td>            
-		@Html.Truncate(@Html.DisplayFor(modelItem => item.Title).ToHtmlString(),25)
-	</td>
-	<td>
-		@Html.Truncate(@Html.DisplayFor(modelItem => item.Artist.Name).ToHtmlString(),25)
-	</td>
+	<tr>
+		 <td>
+			  @Html.ActionLink("Edit", "Edit", new { id=item.AlbumId }) |
+
+			  @Html.ActionLink("Delete", "Delete", new { id=item.AlbumId })
+		 </td>
+		 <td>
+			  @Html.DisplayFor(modelItem => item.Genre.Name)
+		 </td>
+		 <td>
+			  @Truncate(item.Artist.Name, 25)
+		 </td>
+		 <td>
+			  @Truncate(item.Title, 25)
+		 </td>
+		 <td>
+			  @Html.DisplayFor(modelItem => item.Price)
+		 </td>
+	</tr>
 	````
 	
-<a name="Ex02Task4" />
-#### Task 4 - Running the Application####
+<a name="Ex2Task3" />
+#### Task 3 - Running the Application####
 
 In this task, you will test that the **StoreManager** **Index** View template truncates the Album’s Title and Artist Name.
 
@@ -491,239 +389,138 @@ The Controller Edit action method will retrieve the appropriate Album from the d
 
 Once the user updates the Album form values and clicks the **Save** button, the changes are submitted via an HTTP-POST call back to **/StoreManager/Edit/id**. Although the URL remains the same as in the last call, ASP.NET MVC identifies that this time it is an HTTP-POST and therefore executes a different Edit action method (one decorated with **[HttpPost]**).
 
-<a name="Ex03Task1" />
-#### Task 1 - Creating the StoreManagerViewModel####
 
-In order to build and manage the intended Edit form, you will first need to pass to the View template an object with the following:
+<a name="Ex3Task1" />
+#### Task 1 - Implementing the HTTP-GET Edit Action Method ####
 
-1.	An Album object that represents the current Album being edited
-1.	A List of all Genres to populate the Genre dropdown list
-1.	A List of all Artists to populate the Artist dropdown list
+In this task, you will implement the HTTP-GET version of the Edit action method to retrieve the appropriate Album from the database, as well as a list of all Genres and Artists. It will package this data up into the **StoreManagerViewModel** object defined in the last step, which will then be passed to a View template to render the response with.
 
+1. Open **Visual Studio 2012** and open the **FormsLab-Ex3-Begin.sln** solution located in the **Source\Ex3-CreatingTheEditView\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-In this task, you will create a new **StoreManagerViewModel** class to help manage all of the above data. This class will be used within both Edit and Create action methods.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
 
-1. Start Visual Studio 11 Express Beta for Web from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
-1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex03-CreatingTheEditView\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the solution of the previous exercise.
+	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
-1.	Follow these steps to install the **NuGet** package dependencies.
+	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
-	>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
+1.	Open the **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 
-	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
+1.	Replace the **HTTP-GET Edit** action method with the following code to retrieve the appropriate **Album** as well as the **Genres** and **Artists** lists.
 
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternatively install the NuGet Power Tools from the **Manage NuGet Packages** window. 
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 StoreManagerController HTTP-GET Edit action_)
 
-	1.	After installing the package, type **Enable-PackageRestore**.
-
-	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
-
-1. Create the **StoreManagerViewModel** class. To do this, right-click on the **ViewModels** folder, select **Add** and then **Class**.
-
-1. Name it **StoreManagerViewModel.cs** and click **Add.**
-
-1. Add the following directions in the **StoreManagerViewModel.cs** class.
-
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 using System.Web.Mvc and MvcMusicStore.Models_)
-
-	<!--mark: 5,6-->
+	<!-- mark:3-13 -->
 	````C#
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Web;
-	using System.Web.Mvc;
-	using MvcMusicStore.Models;
-	````
+	public ActionResult Edit(int id)
+	{
+		Album album = this.db.Albums.Find(id);
 
-1.	Add the **Album**, **Artists** and **Genres** properties.
+		if (album == null)
+		{
+			 return this.HttpNotFound();
+		}
 
-	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex3 **StoreManagerViewModel** properties_)
+		this.ViewBag.GenreId = new SelectList(this.db.Genres, "GenreId", "Name", album.GenreId);
+		this.ViewBag.ArtistId = new SelectList(this.db.Artists, "ArtistId", "Name", album.ArtistId);
 
-	<!-- mark:3-5 -->
-	````C#
-    public class StoreManagerViewModel
-    {
-        public Album Album { get; set; }
-        public SelectList Artists { get; set; }
-        public SelectList Genres { get; set; }
-    }
+		return this.View(album);
+	}
 	````
 
 	>**Note:** You are using **System.Web.Mvc** **SelectList** for Artists and Genres instead of the **System.Collections.Generic** List.
 	>
 	>**SelectList** is a cleaner way to populate HTML dropdowns and manage things like current selection. Instantiating and later setting up these ViewModel objects in the controller action will make the Edit form scenario cleaner.
 
-
-<a name="Ex03Task2" />
-#### Task 2 - Implementing the HTTP-GET Edit Action Method ####
-
-In this task, you will implement the HTTP-GET version of the Edit action method to retrieve the appropriate Album from the database, as well as a list of all Genres and Artists. It will package this data up into the **StoreManagerViewModel** object defined in the last step, which will then be passed to a View template to render the response with.
-
-1.	Open the **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
-1.	Add the following directive to **MvcMusicStore.ViewModels**. 
-	
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 using MvcMusicStore.ViewModels_)
-
-	<!-- mark:2 -->
-	````C#
-	using MvcMusicStore.Models;
-	using MvcMusicStore.ViewModels;
-	````
-
-1.	Replace the **HTTP-GET Edit** action method with the following code to retrieve the appropriate **Album** as well as the **Genres** and **Artists** lists.
-
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 StoreManagerController HTTP-GET Edit action_)
-
-	<!-- mark:3-12 -->
-	````C#
-	public ActionResult Edit(int id)
-	{
-		Album album = storeDB.Albums.Single(a => a.AlbumId == id);
-
-		var viewModel = new StoreManagerViewModel()
-		{
-			Album = album,
-			Genres = new SelectList(storeDB.Genres.ToList(), "GenreId", "Name", album.GenreId),
-			Artists = new SelectList(storeDB.Artists.ToList(), "ArtistId", "Name", album.ArtistId)
-		};
-
-		return View(viewModel);
-	}
-	````
-
-<a name="Ex03Task3" />
-#### Task 3 - Creating the Edit View####
+<a name="Ex3Task2" />
+#### Task 2 - Creating the Edit View####
 
 In this task, you will create an Edit View template that will later display the album properties.
 
-1.	Before creating the new View template, you should build the project so that the **Add View Dialog** knows about the class to use. Build the project by selecting the **Debug** menu item and then **Build MvcMusicStore**.
-
-	![Building the project](images/building-the-project.png?raw=true "Building the project")
-
-	_Building the project_
-
 1. Create the Edit View. To do this, right-click inside the **Edit** action method and select **Add View**.
-1.	In the Add View dialog, verify that the View Name is **Edit**. Check the **Create a strongly-typed view** checkbox and select **StoreManagerViewModel (MvcMusicStore.ViewModels)** from the **View data class** drop-down. Select **Edit** from the **Scaffold template** drop-down. Leave the other fields with their default value and then click **Add**.
+1.	In the Add View dialog, verify that the View Name is **Edit**. Check the **Create a strongly-typed view** checkbox and select **Album (MvcMusicStore.Models)** from the **View data class** drop-down. Select **Edit** from the **Scaffold template** drop-down. Leave the other fields with their default value and then click **Add**.
 
 	![Adding an Edit view](images/adding-an-edit-view.png?raw=true "Adding an Edit view")
 
 	_Adding an Edit view_
 
-1.	The generated Edit View template doesn’t include any fields because none of the properties in the **StoreManagerViewModel** are simple types like strings and integers.
-
-	![edit-view-without-fields](images/edit-view-without-fields.png?raw=true)
-
-	_Edit View without fields_
-
-<a name="Ex03Task4" />
-#### Task 4 - Customizing the Edit View ####
-
-In this task, you will change the default View template to display the Album properties.
-
-1.	Add an **Html.EditorFor()** helper after the **\<legend\>** tag to render a default HTML editing form for the Album. You can also change the legend to **Edit Album**.
-
-	<!-- mark:1-4 -->
-	````HTML
-	<legend>Edit Album</legend>
-	
-	@Html.EditorFor(model => model.Album, 
-	                        new { Artists = Model.Artists, Genres = Model.Genres })
-	<p>
-		<input type="submit" value="Save" />
-	</p>
-	````
-
-	>**Note**: **Html.EditorFor()** helper will create a form that will enable the edition of its first parameter, in this case an **Album**. Additionally, you are passing a second parameter which is optional, that contains the list of **Artists** and **Genres**. This will be used later on.
-
-
-<a name="Ex03Task5" />
-#### Task 5 - Running the Application ####
+<a name="Ex3Task3" />
+#### Task 3 - Running the Application ####
 
 In this task, you will test that the **StoreManager** **Edit** View page displays the properties' values for the album passed as parameter.
 
 1.	Press **F5** to run the Application.
-1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/388** to verify that the properties' values for the album passed are displayed.
+1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/136** to verify that the properties' values for the album passed are displayed.
 
 	![Browsing Album's Edit View](images/browsing-albums-edit-view.png?raw=true "Browsing Album's Edit View")
 
 	_Browsing Album's Edit view_
 
-<a name="Ex03Task6" />
-#### Task 6 - Creating a Shared Album Editor Template ####
-
-Since the exact same form fields for Album Edit will be needed to handle the Album Create case, in this task you will create a Shared Album Editor template that will take care of both cases with the same code.
-
-1.	Close the browser if needed, to return to the Visual Studio window. Create a folder inside **/Views/Shared** folder and name it **EditorTemplates**.
-
-	
-	![Adding a new folder](images/add-new-folder-shared.png?raw=true "Adding a new folder")
-
-	_Adding a new folder_
-
-1. Right-click the **EditorTemplates** folder, select **Add** and then **View**.
-
-	![Adding a view template](images/adding-a-view-template.png?raw=true "Adding a view template")
-
-	_Adding a View template_
-
-1.	This will be a Partial View, meaning that it is intended to be displayed inside another view. In the Add View dialog, change the Name to **Album**. Select the **Create as partial view** and the **Create a strongly-typed view** options. Select **Album (MvcMusicStore. Models)** from the **Model class** drop-down and select **Edit** from the **Scaffold tempalte** drop-down. Leave the other fields with their default value and then click **Add**.
-
-	![Adding a partial view](images/adding-a-partial-view.png?raw=true "Adding a partial view")
-
-	_Adding a partial view_
-
-
-<a name="Ex03Task7" />
-#### Task 7 - Implementing drop-downs on the Album Editor Template ####
+<a name="Ex3Task4" />
+#### Task 4 - Implementing drop-downs on the Album Editor Template ####
 
 In this task, you will add drop-downs to the View template created in the last task, so that the user can select from a list of Artists and Genres.
 
-1.	Replace all the **Album** Partial View code with the following:
+1.	Replace all the **Album** fieldset code with the following:
 
-	<!-- mark:4-26 -->
 	````HTML
-	@model MvcMusicStore.Models.Album
-	
-		<p>
-			@Html.LabelFor(model => model.Title)
-			@Html.TextBoxFor(model => model.Title)
-			Html.ValidationMessageFor(model => model.Title)
-		</p>            
-		<p>
-			@Html.LabelFor(model => model.Price) 
-			@Html.TextBoxFor(model => model.Price) 
-			@Html.ValidationMessageFor(model => model.Price)
-		</p>            
-		<p>
-			@Html.LabelFor(model => model.AlbumArtUrl)
-			@Html.TextBoxFor(model => model.AlbumArtUrl)
-			@Html.ValidationMessageFor(model => model.AlbumArtUrl)
-		</p>            
-		<p>
-			@Html.LabelFor(model => model.Artist)
-			@Html.DropDownList("ArtistId", (SelectList) ViewData["Artists"])
-		</p>            
-		<p>
-			@Html.LabelFor(model => model.Genre)
-			@Html.DropDownList("GenreId", (SelectList) ViewData["Genres"])
-		</p>           
+	<fieldset>
+		 <legend>Album</legend>
+
+		 @Html.HiddenFor(model => model.AlbumId)
+
+		 <div class="editor-label">
+			  @Html.LabelFor(model => model.Title)
+		 </div>
+		 <div class="editor-field">
+			  @Html.EditorFor(model => model.Title)
+			  @Html.ValidationMessageFor(model => model.Title)
+		 </div>
+
+		 <div class="editor-label">
+			  @Html.LabelFor(model => model.Price)
+		 </div>
+		 <div class="editor-field">
+			  @Html.EditorFor(model => model.Price)
+			  @Html.ValidationMessageFor(model => model.Price)
+		 </div>
+
+		 <div class="editor-label">
+			  @Html.LabelFor(model => model.AlbumArtUrl)
+		 </div>
+		 <div class="editor-field">
+			  @Html.EditorFor(model => model.AlbumArtUrl)
+			  @Html.ValidationMessageFor(model => model.AlbumArtUrl)
+		 </div>
+			  
+		 <div class="editor-label">
+			  @Html.LabelFor(model => model.Artist)
+		 </div>
+		 <div class="editor-field">
+			  @Html.DropDownList("ArtistId", (SelectList) ViewData["Artists"])
+			  @Html.ValidationMessageFor(model => model.ArtistId)
+		 </div>
+
+		 <div class="editor-label">
+			  @Html.LabelFor(model => model.Genre)
+		 </div>
+		 <div class="editor-field">
+			  @Html.DropDownList("GenreId", (SelectList) ViewData["Genres"])
+			  @Html.ValidationMessageFor(model => model.GenreId)
+		 </div>
+
+		 <p>
+			  <input type="submit" value="Save" />
+		 </p>
+	</fieldset>          
 	````
 
 	>**Note:** An **Html.DropDownList** helper has been added to render drop-downs for choosing Artists and Genres. The parameters passed to **Html.DropDownList** are:
 	>
-	>1. The name of the form field (**"ArtistId"**)
-	>1. The **SelectList** of values for the drop-down. **ViewData** is actually the object taken from the **Html.EditorFor** second parameter you included in task 4:
-	>
-	> ````C#
-	>@Html.EditorFor(model => model.Album, 
-	                        new { Artists = Model.Artists, Genres = Model.Genres })
-	>````
-	>
-	>The **Html.EditorFor()** helper will create a form that will enable the edition of its first parameter, in this case an **Album**. Additionally, you are passing a second parameter which is optional, that contains the list of **Artists** and **Genres**. This will be used later on.
+	>1. The name of the form field (**"ArtistId"**).
+	>1. The **SelectList** of values for the drop-down.
 
-<a name="Ex03Task8" />
-#### Task 8 - Running the Application ####
+<a name="Ex3Task5" />
+#### Task 5 - Running the Application ####
 
 In this task, you will test that the **StoreManager** **Edit** View page displays drop-downs instead of Artist and Genre ID text fields.
 
@@ -735,8 +532,8 @@ In this task, you will test that the **StoreManager** **Edit** View page display
 	_Browsing Album’s Edit view, this time with dropdowns_
 
 
-<a name="Ex03Task9" />
-#### Task 9 - Implementing the HTTP-POST Edit action method ####
+<a name="Ex3Task6" />
+#### Task 6 - Implementing the HTTP-POST Edit action method ####
 
 Now that the Edit View displays as expected, you need to implement the HTTP-POST Edit Action method to save the changes made to the Album.
 
@@ -745,56 +542,48 @@ Now that the Edit View displays as expected, you need to implement the HTTP-POST
 
 	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex3 StoreManagerController HTTP-POST Edit action_)
 	
-	<!-- mark:4-27 -->
+	<!-- mark:2-16 -->
 	````C#
 	[HttpPost]
-	public ActionResult Edit(int id, FormCollection collection)
+	public ActionResult Edit(Album album)
 	{
-		 var album = storeDB.Albums.Single(a => a.AlbumId == id);
-
-		 try
+		 if (ModelState.IsValid)
 		 {
-			  // Save Album
+			  this.db.Entry(album).State = EntityState.Modified;
+			  this.db.SaveChanges();
 
-			  UpdateModel(album, "Album");
-			  storeDB.SaveChanges();
-
-			  return RedirectToAction("Index");
+			  return this.RedirectToAction("Index");
 		 }
-		 catch
-		 {
-			  // Error occurred - so redisplay the form
 
-			  var viewModel = new StoreManagerViewModel()
-			  {
-					Album = album,
-					Genres = new SelectList(storeDB.Genres.ToList(), "GenreId", "Name", album.GenreId),
-					Artists = new SelectList(storeDB.Artists.ToList(), "ArtistId", "Name", album.ArtistId)
-			  };
+		 this.ViewBag.GenreId = new SelectList(this.db.Genres, "GenreId", "Name", album.GenreId);
+		 this.ViewBag.ArtistId = new SelectList(this.db.Artists, "ArtistId", "Name", album.ArtistId);
 
-			  return View(viewModel);
-		 }
+		 return this.View(album);
 	}
 	````
 
 	>**Note:** This method will be executed when the user clicks the **Save** button of the View and performs an HTTP-POST of the form values back to the server to persist them in the database. The decorator **[HttpPost]** indicates that the method should be used for those HTTP-POST scenarios.
-	>The method takes an **id** (read from the route parameter values) and a **FormCollection** (read from the HTML Form).
+	> The method takes an **Album** object. ASP.NET MVC will automatically create the Album object from the posted \<form\> values.
 	>
-	>The method will perform three steps:
+	> The method will perform these steps:
 	>
-	>1. Load the existing album object from the database with the **id** passed as parameter
-	>1. Try to update the album using the values posted from the client, using the Controller’s built-in **UpdateModel** method. The **UpdateModel** method actually relies on the **ModelBinder** (MVC 2.0) to identify that you are actually updating a **StoreManagerViewModel** instance. Since that **ViewModel** holds an **Album** object and also 2 **SelectLists** for **Artists** and **Genres**, the key **“Album”** you are including as **UpdateModel**’s second parameter, refers to the need of updating the **“Album”** property of the Model.
-	>1. Display results back to the user - either by redisplaying the form in case of an error, or by redirecting back to the list of albums in case of a successful update.
+	> 1. If model is valid:
+	>
+	>	1. Update the album entry in the context to mark it as a modified object.
+	>
+	>	1. Save the changes and redirect to the index view.
+	>
+	> 1. If the model is not valid, it will populate the ViewBag with the **GenreId** and **ArtistId**, then it will return the view with the received Album object to allow the user perform any required update.
 
 
-<a name="Ex03Task10" />
-#### Task 10 - Running the Application ####
+<a name="Ex3Task7" />
+#### Task 7 - Running the Application ####
 
 In this task, you will test that the **StoreManager Edit** View page actually saves the updated Album data in the database.
 
 1.	Press **F5** to run the Application.
 
-1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/388**. Change the Album title to **Greatest Hits Vol. 1** and click on **Save**. Verify that album’s title actually changed in the list of albums.
+1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/136**. Change the Album title to **Greatest Hits Vol. 1** and click on **Save**. Verify that album’s title actually changed in the list of albums.
 	
 	![Updating an album](images/updating-an-album.png?raw=true "Updating an album")
 
@@ -812,26 +601,18 @@ Like you did with the Edit functionality, you will implement the Create scenario
 1.	A second action method will handle the scenario where the store manager clicks the **Save** button within the form and submits the values back to the **/StoreManager/Create** URL as an HTTP-POST.
 
 	
-<a name="Ex04Task1" />
+<a name="Ex4Task1" />
 #### Task 1 - Implementing the HTTP-GET Create action method ####
 
 In this task, you will implement the HTTP-GET version of the Create action method to retrieve a list of all Genres and Artists, package this data up into a **StoreManagerViewModel** object, which will then be passed to a View template.
 
-1. Start Visual Studio 11 Express Beta for Web from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
+1. Open **Visual Studio 2012** and open the **FormsLab-Ex4-Begin.sln** solution located in the **Source\Ex4-AddingACreateView\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex04-AddingACreateView\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the solution of the previous exercise.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
 
-1.	Follow these steps to install the **NuGet** package dependencies.
+	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
-	>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
-
-	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
-
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternatively install the NuGet Power Tools from the **Manage NuGet Packages** window. 
-
-	1.	After installing the package, type **Enable-PackageRestore**.
-
-	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
+	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
 1.	Open **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 
@@ -839,37 +620,27 @@ In this task, you will implement the HTTP-GET version of the Create action metho
 
 	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex4 StoreManagerController HTTP-GET Create action_)
 
-	<!-- mark:6-11 -->
+	<!-- mark:4-10 -->
 	````C#	
 	//
 	// GET: /StoreManager/Create
 
 	public ActionResult Create()
 	{
-		var viewModel = new StoreManagerViewModel()
-		{
-			 Album = new Album(),
-			 Genres = new SelectList(storeDB.Genres.ToList(), "GenreId", "Name"),
-			 Artists = new SelectList(storeDB.Artists.ToList(), "ArtistId", "Name")
-		};
+		 this.ViewBag.GenreId = new SelectList(this.db.Genres, "GenreId", "Name");
+		 this.ViewBag.ArtistId = new SelectList(this.db.Artists, "ArtistId", "Name");
 
-		return View(viewModel);
+		 return this.View();
 	}
 	````
 
-<a name="Ex04Task2" />
+<a name="Ex4Task2" />
 #### Task 2 - Adding the Create View ####
 
 In this task, you will add the Create View template that will display a new (empty) Album form.
 
-1.	Before creating the new View template, you should build the project so that the **Add View Dialog** knows about the class to use. Build the project by selecting the **Debug** menu item and then **Build MvcMusicStore**.
-
-	![Building the project](images/building-the-project.png?raw=true "Building the project")
-
-	_Building the project_
-
 1.	Right-click inside the **Create** action method and select **Add View**. This will bring up the Add View dialog.
-1.	In the Add View dialog, verify that the View Name is **Create**. Select the **Create a strongly-typed view** option and select **StoreManagerViewModel (MvcMusicStore.ViewModels)** from the **Model class** drop-down and **Create** from the **Scaffold template** drop-down. Leave the other fields with their default value and then click **Add**. 
+1.	In the Add View dialog, verify that the View Name is **Create**. Select the **Create a strongly-typed view** option and select **Album (MvcMusicStore.Models)** from the **Model class** drop-down and **Create** from the **Scaffold template** drop-down. Leave the other fields with their default value and then click **Add**. 
 
 
 	![Adding a create view](images/adding-a-create-view.png?raw=true "adding-a-create-view.png")
@@ -877,21 +648,37 @@ In this task, you will add the Create View template that will display a new (emp
 	_Adding the Create View_
 
 
-1.	Update the generated View template to invoke the **Html.EditorFor()** helper method:
+1.	Update the **GenreId** and **ArtistId** fields to use a drop-down list as shown below:
 
-	<!-- mark:2-4 -->
+	<!-- mark:5-19 -->
 	````HTML
+	...
 	<fieldset>
-        <legend>Create Album</legend>
-        @Html.EditorFor(model => model.Album, 
-                    new { Artists = Model.Artists, Genres = Model.Genres })
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+		 <legend>Album</legend>
+			  
+		 <div class="editor-label">
+			  @Html.LabelFor(model => model.GenreId, "Genre")
+		 </div>
+		 <div class="editor-field">
+			  @Html.DropDownList("GenreId", String.Empty)
+			  @Html.ValidationMessageFor(model => model.GenreId)
+		 </div>
+
+		 <div class="editor-label">
+			  @Html.LabelFor(model => model.ArtistId, "Artist")
+		 </div>
+		 <div class="editor-field">
+			  @Html.DropDownList("ArtistId", String.Empty)
+			  @Html.ValidationMessageFor(model => model.ArtistId)
+		 </div>
+
+		 <div class="editor-label">
+			  @Html.LabelFor(model => model.Title)
+		 </div>
+	    ...
 	````
 
-<a name="Ex04Task3" />
+<a name="Ex4Task3" />
 #### Task 3 - Running the Application ####
 
 In this task, you will test that the **StoreManager** **Create** View page displays an empty Album form.
@@ -904,7 +691,7 @@ In this task, you will test that the **StoreManager** **Create** View page displ
 	_Create View with an empty form_
 
 
-<a name="Ex04Task4" />
+<a name="Ex4Task4" />
 #### Task 4 - Implementing the HTTP-POST Create Action Method ####
 
 In this task, you will implement the HTTP-POST version of the Create action method that will be invoked when a user clicks the **Save** button. The method should save the new album in the database.
@@ -914,57 +701,41 @@ In this task, you will implement the HTTP-POST version of the Create action meth
 
 	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex4 StoreManagerController HTTP- POST Create action_)
 
-	<!-- mark:2-28 -->
+	<!-- mark:2-16 -->
 	````C#
-	[HttpPost]        
+	[HttpPost]
 	public ActionResult Create(Album album)
 	{
-		try
-		{
-			if (ModelState.IsValid)
-			{
-				// Save Album
-             storeDB.AddToAlbums(album);
-             storeDB.SaveChanges();
+		 if (ModelState.IsValid)
+		 {
+			  this.db.Albums.Add(album);
+			  this.db.SaveChanges();
 
-             return Redirect("Index");
-			}
-		}
-		catch (Exception ex)
-		{
-			ModelState.AddModelError(String.Empty, ex);
-		}
+			  return this.RedirectToAction("Index");
+		 }
 
-		// Invalid - redisplay with errors
-		var viewModel = new StoreManagerViewModel()
-		{
-			Album = album,
-			Genres = new SelectList(storeDB.Genres.ToList(), "GenreId", "Name", album.GenreId),
-			Artists = new SelectList(storeDB.Artists.ToList(), "ArtistId", "Name", album.ArtistId)
-		};
+		 this.ViewBag.GenreId = new SelectList(this.db.Genres, "GenreId", "Name", album.GenreId);
+		 this.ViewBag.ArtistId = new SelectList(this.db.Artists, "ArtistId", "Name", album.ArtistId);
 
-		return View(viewModel);
+		 return this.View(album);
 	}
 	````
 
-	>**Note:** One difference from the previous Edit action method is that instead of loading an existing Album and calling UpdateModel, the action method is receiving an Album as a parameter. ASP.NET MVC will automatically create this Album object from the posted \<form\> values. 
-	>The method checks that the submitted values are valid, and if they are, it saves the new Album in the database and then redirects to the StoreManager Index View.
+	>**Note:** The Create action is pretty similar to the previous Edit action method but instead of setting the object as modified, it is being added to the context.
 
-
-<a name="Ex04Task5" />
+<a name="Ex4Task5" />
 #### Task 5 - Running the Application ####
 
 In this task, you will test that the **StoreManager Create** View page lets you create a new Album and then redirects to the StoreManager Index View.
 
 1. Press **F5** to run the Application.
-1. The project starts in the Home page. Change the URL to **/StoreManager/Create**. Fill the empty form with data for a new Album, like the one in the following figure:
+1. The project starts in the Home page. Change the URL to **/StoreManager/Create**. Fill all the form fields with data for a new Album, like the one in the following figure:
 
 	![Creating an Album](images/creating-an-album.png?raw=true "Creating an Album")
 
 	_Creating an Album_
 
 1. Verify that you get redirected to the StoreManager Index View that includes the new Album just created.
-
 
 	![New Album Created](images/new-album-created.png?raw=true "New Album Created")
 
@@ -979,47 +750,43 @@ The ability to delete albums is not yet implemented. This is what this exercise 
 1. One action method will display a confirmation form
 1. A second action method will handle the form submission
 	
-<a name="Ex05Task1" />
+<a name="Ex5Task1" />
 #### Task 1 - Implementing the HTTP-GET Delete Action Method ####
 
 In this task, you will implement the HTTP-GET version of the Delete action method to retrieve the album’s information.
 
-1. Start Microsoft Visual Studio 11 from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
-1. In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to **Source\Ex05-HandlingDeletion\Begin**, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the last solution.
+1. Open **Visual Studio 2012** and open the **FormsLab-Ex5-Begin.sln** solution located in the **Source\Ex5-HandlingDeletion\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-1.	Follow these steps to install the **NuGet** package dependencies.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
 
-	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
+	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**.
-
-	1.	After installing the package, type **Enable-PackageRestore**.
-
-	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
+	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
 1. Open **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
+
 1. The Delete controller action is exactly the same as the previous Store Details controller action: it queries the **album** object from the database using the **id** provided in the URL and returns the appropriate **View**. To do this, replace the HTTP-GET **Delete** action method code with the following:
 
 
 	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex5 Handling Deletion HTTP-GET Delete action_)
 
-	<!-- mark:5-7 -->
+	<!-- mark:4-14 -->
 	````C#
 	//
-	// GET: /StoreManager/Delete/5	
+	// GET: /StoreManager/Delete/5
+
 	public ActionResult Delete(int id)
 	{
-	    var album = storeDB.Albums.Single(a => a.AlbumId == id);
-	
-	    return View(album);
+		 Album album = this.db.Albums.Find(id);
+
+		 if (album == null)
+		 {
+			  return this.HttpNotFound();
+		 }
+
+		 return this.View(album);
 	}
 	````
-
-1.	Before creating the new View template, you should build the project so that the **Add View Dialog** knows about the class to use. Build the project by selecting the **Debug** menu item and then **Build MvcMusicStore**.
-
-	![Building the Project](images/building-the-project.png?raw=true "Building the Project")
-
-	_Building the project_
 
 1.	Right-click inside the **Delete** action method and select **Add View**. This will bring up the Add View dialog.
 
@@ -1080,39 +847,16 @@ In this task, you will implement the HTTP-POST version of the Delete action meth
 	[HttpPost]
 	public ActionResult Delete(int id, FormCollection collection)
 	{
-	    var album = storeDB.Albums
-	        .Include("OrderDetails").Include("Carts")
-	        .Single(a => a.AlbumId == id);
-	
-	    storeDB.DeleteObject(album);
-	    storeDB.SaveChanges();
-	
-	    return RedirectToAction("Index");	
+		 Album album = this.db.Albums.Find(id);
+		 this.db.Albums.Remove(album);
+		 this.db.SaveChanges();
+
+		 return RedirectToAction("Index");	
 	}
 	````
 
-<a name="Ex05Task4" />
-#### Task 4 - Deleting on Cascade ####
-
-Because of Referential Integrity, a deletion of an **Album** could raise an exception if it has **OrderDetails** entries. To solve this, you should allow cascade deletes. So, when you delete an Album, it will delete all the OrderDetails entries for that album. In this task, you will activate deletion on cascade.
-
->**Note:** In this scenario you will delete an Album even if it has an order associated. Consider that in other application scenarios this could not be the correct action.
-
-1.	On the Solution Explorer expand the **Models** folder and then double-click **StoreDB.edmx**. This opens the Entity Data Model designer.
-1.	Open the **Models/StoreDB.edmx** entity diagram. Right-click the relation between **Album** and **OrderDetail** and select **Properties**.
-	
-	![Editing properties on a relation](images/editing-properties-on-a-relation.png?raw=true)
-
-	_Editing Properties on a Relation_
-
-1. In the **Properties** window, set the **End1 OnDelete** value to **Cascade**.
-
-	![OnDelete property](images/ondelete-property.png?raw=true "OnDelete property")
-
-	_OnDelete property_
-
-<a name="Ex05Task5" />
-#### Task 5 - Running the Application ####
+<a name="Ex5Task4" />
+#### Task 4 - Running the Application ####
 
 In this task, you will test that the **StoreManager Delete** View page lets you delete an Album and then redirects to the StoreManager Index View.
 
@@ -1138,44 +882,36 @@ You can add validation to the application by adding Data Annotations to your mod
 
 In this task, you will add Data Annotations to the Album Model that will make the Create and Edit page display validation messages when appropriate.
 
-1. Start Microsoft Visual Studio 11 from **Start** | **All Programs** | **Microsoft Visual Studio 11 Express** | **Visual Studio 11 Express Beta for Web**.
+For a simple Model class, adding a Data Annotation is just handled by adding a **using** statement for **System.ComponentModel.DataAnnotation**, then placing a **[Required]** attribute on the appropriate properties.
+The following example would make the **Name** property a required field in the View.
 
-1.	In the **File** menu, choose **Open Project**. In the Open Project dialog, browse to Source\Ex06-AddingValidation\Begin, select **MvcMusicStore.sln** and click **Open**. You can alternatively continue working with the solution of the previous exercise.
+````C#
+using System.ComponentModel.DataAnnotations;
+namespace SuperheroSample.Models
+{
+    public class Superhero
+    {
+        [Required]
+        public string Name { get; set; }
+        public bool WearsCape { get; set; }
+    }
+}
+````
 
-1.	Follow these steps to install the **NuGet** package dependencies.
+This is a little more complex in cases like this application where the Entity Data Model is generated. If you added Data Annotations directly to the model classes, they would be overwritten if you update the model from the database.
+Instead, you can make use of metadata partial classes which will exist to hold the annotations and are associated with the model classes using the **\[MetadataType\]** attribute.
 
-	>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
+1. Open **Visual Studio 2012** and open the **FormsLab-Ex6-Begin.sln** solution located in the **Source\Ex6-AddingValidation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
 
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**. You can alternatively install the NuGet Power Tools from the **Manage NuGet Packages** window. 
+	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
-	1.	After installing the package, type **Enable-PackageRestore**.
+	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
-	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
+1. Open the **Album.cs** from the **Models** folder.
 
-1.	Add a new metadata partial class. To do this, right-click the **Models** folder within the Solution Explorer, select **Add** and then **Class**. Name it **Album.cs** and click **OK**.
-
-	>**Note:** For a simple Model class, adding a Data Annotation is just handled by adding a **using** statement for **System.ComponentModel.DataAnnotation**, then placing a **[Required]** attribute on the appropriate properties.
-	>The following example would make the **Name** property a required field in the View.
-	>
-	>````C#
-	>using System.ComponentModel.DataAnnotations;
-	>namespace SuperheroSample.Models
-	>{
-	>    public class Superhero
-	>    {
-	>        [Required]
-	>        public string Name { get; set; }
-	>        public bool WearsCape { get; set; }
-	>    }
-	>}
-	>````
-	>
-	>This is a little more complex in cases like this application where the Entity Data Model is generated. If you added Data Annotations directly to the model classes, they would be overwritten if you update the model from the database.
-	>Instead, you can make use of metadata partial classes which will exist to hold the annotations and are associated with the model classes using the **\[MetadataType\]** attribute.
-
-1.	Replace **Album.cs** content with the highlighted code, so that it looks like the following:
+1. Replace **Album.cs** content with the highlighted code, so that it looks like the following:
 
 	>**Note:** The line **\[DisplayFormat(ConvertEmptyStringToNull=false)\]** indicates that empty strings from the model won’t be converted to null when the data field is updated in the data source. 
 	>This setting will avoid an exception when the Entity Framework assigns null values to the model before Data Annotation validates the fields.
@@ -1184,47 +920,41 @@ In this task, you will add Data Annotations to the Album Model that will make th
 
 	<!-- mark:5-42 -->
 	````C#
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Web;
-	using System.ComponentModel;
-	using System.ComponentModel.DataAnnotations;
-	using System.Web.Mvc;
-	
 	namespace MvcMusicStore.Models
 	{
-	    [MetadataType(typeof(AlbumMetaData))]
-	    public partial class Album
-	    {
-	        // Validation rules for the Album class
-	
-	        [Bind(Exclude = "AlbumId")]
-	        public class AlbumMetaData
-	        {
-	            [ScaffoldColumn(false)]
-	            public object AlbumId { get; set; }
-	
-	            [DisplayName("Genre")]
-	            public object GenreId { get; set; }
-	
-	            [DisplayName("Artist")]
-	            public object ArtistId { get; set; }
-	
-	            [Required(ErrorMessage = "An Album Title is required")]
-	            [DisplayFormat(ConvertEmptyStringToNull = false)]
-	            [StringLength(160)]
-	            public object Title { get; set; }
-	
-	            [DisplayName("Album Art URL")]
-	            [StringLength(1024)]
-	            public object AlbumArtUrl { get; set; }
-	
-	            [Required(ErrorMessage = "Price is required")]
-	            [Range(0.01, 100.00, ErrorMessage = "Price must be between 0.01 and 100.00")]
-	            public object Price { get; set; }
-	        }
-	    }
+		 using System.ComponentModel;
+		 using System.ComponentModel.DataAnnotations;
+
+		 public class Album
+		 {
+			  [ScaffoldColumn(false)]
+			  public int AlbumId { get; set; }
+
+			  [DisplayName("Genre")]
+			  public int GenreId { get; set; }
+			  
+			  [DisplayName("Artist")]
+			  public int ArtistId { get; set; }
+
+			  [Required(ErrorMessage = "An Album Title is required")]
+			  [DisplayFormat(ConvertEmptyStringToNull = false)]
+			  [StringLength(160, MinimumLength = 2)]
+			  public string Title { get; set; }
+
+			  [Required(ErrorMessage = "Price is required")]
+			  [Range(0.01, 100.00, ErrorMessage = "Price must be between 0.01 and 100.00")]
+			  [DataType(DataType.Currency)]
+			  public decimal Price { get; set; }
+
+			  [DisplayName("Album Art URL")]
+			  [DataType(DataType.ImageUrl)]
+			  [StringLength(1024)]
+			  public string AlbumArtUrl { get; set; }
+
+			  public virtual Genre Genre { get; set; }
+
+			  public virtual Artist Artist { get; set; }
+		 }
 	}
 	````
 
@@ -1235,7 +965,6 @@ In this task, you will add Data Annotations to the Album Model that will make th
 	>-  DisplayFormat - Specifies how data fields are displayed and formatted.
 	>-  StringLength - Defines a maximum length for a string field
 	>-  Range - Gives a maximum and minimum value for a numeric field
-	>-  Bind - Lists fields to exclude or include when binding parameter or form values to model properties
 	>-  ScaffoldColumn - Allows hiding fields from editor forms
 
 <a name="Ex06Task2" />
@@ -1251,7 +980,7 @@ In this task, you will test that the Create and Edit pages validate fields, usin
 
 	_Validated fields in the Create page_
 
-1.	You can verify that the same occurs with the **Edit** page. Change the URL to **/StoreManager/Edit/388** and verify that the display names match the ones in the partial class (like **Album Art URL** instead of **AlbumArtUrl**). Empty the **Title** and **Price** fields and click **Save**. Verify that you get the corresponding validation messages.
+1.	You can verify that the same occurs with the **Edit** page. Change the URL to **/StoreManager/Edit/136** and verify that the display names match the ones in the partial class (like **Album Art URL** instead of **AlbumArtUrl**). Empty the **Title** and **Price** fields and click **Save**. Verify that you get the corresponding validation messages.
 
 	![Validated fields in the Edit page](images/validated-fields-in-edit-page.png?raw=true)
 
@@ -1269,50 +998,53 @@ In this exercise, you will learn how to enable MVC 4 Unobtrusive jQuery validati
 
 In this task, you will run the application before including jQuery in order to compare both validation models.
 
-1. Open the begin solution **MvcMusicStore.sln** at **Source\Ex07-UnobtrusivejQueryValidation\Begin**.
+1. Open **Visual Studio 2012** and open the **FormsLab-Ex7-Begin.sln** solution located in the **Source\Ex7-UnobtrusivejQueryValidation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-1.	Follow these steps to install the **NuGet** package dependencies.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
 
-	>**Note:** You can skip these steps if you continued working with the solution of the previous exercise.
+	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
-	1.	Open the **NuGet** **Package Manager Console**. To do this, select **Tools | Library Package Manager | Package Manager Console**.
-
-	1.	In the **Package Manager Console,** type **Install-Package NuGetPowerTools**.
-
-	1.	After installing the package, type **Enable-PackageRestore**.
-
-	1.	Build the solution. The **NuGet** dependencies will be downloaded and installed automatically.
+	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
 1. Press **F5** to run the application.
 
 1. The project starts in the Home page. Browse **/StoreManager/Create** and click **Save** without filling the form to verify that you get validation messages:
 
- 	![Client validation disabled](./images/Client-validation-disabled.png?raw=true "Client validation disabled")
+ 	![Client validation disabled](./images/validated-fields-in-create-page.png?raw=true "Client validation disabled")
  
 	_Client validation disabled_
 
-1. In the browser, open the **Create** view source code:
+1. In the browser, open the HTML source code:
 
+	<!-- mark:7,15 -->
 	````HTML
 	...
-	<form action="/StoreManager/Create" id="form0" method="post">
-	<div class="validation-summary-errors" id="validationSummary">
-		<ul>
-			<li style="display:none"></li>
-		</ul>
-	</div>    
-	<fieldset>
-        <legend>Create Album</legend> 
-		 <p>
-			  <label for="Album_Title">Title</label>
-			  <input class="input-validation-error" id="Album_Title" name="Album.Title" type="text" value="" />
-			  <span class="field-validation-error" id="Album_Title_validationMessage">An Album Title is required</span>
-		 </p>            
-		 <p>
-			  <label for="Album_Price">Price</label> 
-			  <input class="input-validation-error" id="Album_Price" name="Album.Price" type="text" value="0" /> 
-			  <span class="field-validation-error" id="Album_Price_validationMessage">Price must be between 0.01 and 100.00</span>
-		 </p>
+			  <div class="editor-label">
+					<label for="Price">Price</label>
+			  </div>
+			  <div class="editor-field">
+					<input class="text-box single-line" id="Price" name="Price" type="text" value="" />
+					<span class="field-validation-valid" id="Price_validationMessage"></span>
+			  </div>
+
+			  <div class="editor-label">
+					<label for="AlbumArtUrl">Album Art URL</label>
+			  </div>
+			  <div class="editor-field">
+					<input class="text-box single-line" id="AlbumArtUrl" name="AlbumArtUrl" type="text" value="" />
+					<span class="field-validation-valid" id="AlbumArtUrl_validationMessage"></span>
+			  </div>
+
+			  <p>
+					<input type="submit" value="Create" />
+			  </p>
+		 </fieldset>
+	</form><script type="text/javascript">
+	//<![CDATA[
+	if (!window.mvcClientValidationMetadata) { window.mvcClientValidationMetadata = []; }
+	window.mvcClientValidationMetadata.push({"Fields":[{"FieldName":"GenreId","ReplaceValidationMessageContents":true,"ValidationMessageId":"GenreId_validationMessage","ValidationRules":[{"ErrorMessage":"The Genre field is required.","ValidationParameters":{},"ValidationType":"required"},{"ErrorMessage":"The field Genre must be a number.","ValidationParameters":{},"ValidationType":"number"}]},{"FieldName":"ArtistId","ReplaceValidationMessageContents":true,"ValidationMessageId":"ArtistId_validationMessage","ValidationRules":[{"ErrorMessage":"The Artist field is required.","ValidationParameters":{},"ValidationType":"required"},{"ErrorMessage":"The field Artist must be a number.","ValidationParameters":{},"ValidationType":"number"}]},{"FieldName":"Title","ReplaceValidationMessageContents":true,"ValidationMessageId":"Title_validationMessage","ValidationRules":[{"ErrorMessage":"An Album Title is required","ValidationParameters":{},"ValidationType":"required"},{"ErrorMessage":"The field Title must be a string with a minimum length of 2 and a maximum length of 160.","ValidationParameters":{"min":2,"max":160},"ValidationType":"length"}]},{"FieldName":"Price","ReplaceValidationMessageContents":true,"ValidationMessageId":"Price_validationMessage","ValidationRules":[{"ErrorMessage":"Price must be between 0.01 and 100.00","ValidationParameters":{"min":0.01,"max":100},"ValidationType":"range"},{"ErrorMessage":"Price is required","ValidationParameters":{},"ValidationType":"required"},{"ErrorMessage":"The field Price must be a number.","ValidationParameters":{},"ValidationType":"number"}]},{"FieldName":"AlbumArtUrl","ReplaceValidationMessageContents":true,"ValidationMessageId":"AlbumArtUrl_validationMessage","ValidationRules":[{"ErrorMessage":"The field Album Art URL must be a string with a maximum length of 1024.","ValidationParameters":{"max":1024},"ValidationType":"length"}]}],"FormId":"form0","ReplaceValidationSummary":false,"ValidationSummaryId":"validationSummary"});
+	//]]>
+	</script>
 	...
 	````
 
@@ -1330,7 +1062,7 @@ Additionally, you will add the necessary scripts references to make jQuery Unobt
 	<configuration>
 	  <appSettings>
 		 <add key="webpages:Version" value="2.0.0.0" />
-		 <add key="webpages:Enabled" value="true" />
+		 <add key="webpages:Enabled" value="false" />
 		 <add key="PreserveLoginUrl" value="true" />
 		 <add key="ClientValidationEnabled" value="true" />
 		 <add key="UnobtrusiveJavaScriptEnabled" value="true" />
@@ -1346,15 +1078,13 @@ Additionally, you will add the necessary scripts references to make jQuery Unobt
 
 1. Open **Create.cshtml** at **Views\StoreManager**.
 
-1. Make sure the following script files, **jquery.validate** and  **jquery.validate.unobtrusive**, are referenced in the view.
+1. Make sure the following script files, **jquery.validate** and  **jquery.validate.unobtrusive**, are referenced in the view throught the "**~/bundles/jqueryval**" bundle.
 
-	<!-- mark:4-5 -->
 	````CSHTML
 	...
-	<h2>Create</h2>
-
-	<script src="@Url.Content("~/Scripts/jquery.validate.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")"></script>
+	@section Scripts {
+		 @Scripts.Render("~/bundles/jqueryval")
+	}
 	````
 
 	> **Note:** All these jQuery libraries are included in MVC 4 new projects. You can find more libraries in the **/Scripts** folder of you project.
@@ -1376,33 +1106,32 @@ In this task, you will test that the **StoreManager** create view template perfo
 
 1. In the browser, open the source code for Create view:
 
+	<!-- mark:6-7,14-15,22-23 -->
 	````HTML
 	...
-	<h2>Create</h2>
-
-	<form action="/StoreManager/Create" method="post">
-	<div class="validation-summary-errors">
-		<ul>
-			<li style="display:none"></li>
-		</ul>
+	<div class="editor-label">
+		<label for="Title">Title</label>
 	</div>
-	<fieldset>
-		<legend>Create Album</legend>			  
-		<p>
-			  <label for="Album_Title">Title</label>
-			  <input class="input-validation-error" data-val="true" data-val-length="The field Title must be a string with a maximum length of 160." data-val-length-max="160" data-val-required="An Album Title is required" id="Album_Title" name="Album.Title" type="text" value="" />
-			  <span class="field-validation-error" data-valmsg-for="Album.Title" data-valmsg-replace="true">An Album Title is required</span>
-		 </p>            
-		 <p>
-			  <label for="Album_Price">Price</label> 
-			  <input class="input-validation-error" data-val="true" data-val-number="The field Price must be a number." data-val-range="Price must be between 0.01 and 100.00" data-val-range-max="100" data-val-range-min="0,01" data-val-required="Price is required" id="Album_Price" name="Album.Price" type="text" value="0" /> 
-			  <span class="field-validation-error" data-valmsg-for="Album.Price" data-valmsg-replace="true">Price must be between 0.01 and 100.00</span>
-		 </p>            
-		 <p>
-			  <label for="Album_AlbumArtUrl">Album Art URL</label>
-			  <input data-val="true" data-val-length="The field Album Art URL must be a string with a maximum length of 1024." data-val-length-max="1024" id="Album_AlbumArtUrl" name="Album.AlbumArtUrl" type="text" value="" />
-			  <span class="field-validation-valid" data-valmsg-for="Album.AlbumArtUrl" data-valmsg-replace="true"></span>
-		 </p>          
+	<div class="editor-field">
+		<input class="text-box single-line" data-val="true" data-val-length="The field Title must be a string with a minimum length of 2 and a maximum length of 160." data-val-length-max="160" data-val-length-min="2" data-val-required="An Album Title is required" id="Title" name="Title" type="text" value="" />
+		<span class="field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+	</div>
+
+	<div class="editor-label">
+		<label for="Price">Price</label>
+	</div>
+	<div class="editor-field">
+		<input class="text-box single-line" data-val="true" data-val-number="The field Price must be a number." data-val-range="Price must be between 0.01 and 100.00" data-val-range-max="100" data-val-range-min="0.01" data-val-required="Price is required" id="Price" name="Price" type="text" value="" />
+		<span class="field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
+	</div>
+
+	<div class="editor-label">
+		<label for="AlbumArtUrl">Album Art URL</label>
+	</div>
+	<div class="editor-field">
+		<input class="text-box single-line" data-val="true" data-val-length="The field Album Art URL must be a string with a maximum length of 1024." data-val-length-max="1024" id="AlbumArtUrl" name="AlbumArtUrl" type="text" value="" />
+		<span class="field-validation-valid" data-valmsg-for="AlbumArtUrl" data-valmsg-replace="true"></span>
+	</div>        
 	...
 	
 	````
@@ -1452,3 +1181,238 @@ By completing this Hands-On Lab you have learned how to enable users to change t
 - Form elements like drop-downs
 - Data annotations for Model validation
 - Client Side Validation using jQuery Unobtrusive library
+
+
+<a name="AppendixA" />
+## Appendix A: Installing Visual Studio Express 2012 for Web ##
+
+You can install **Microsoft Visual Studio Express 2012 for Web** or another "Express" version using the **[Microsoft Web Platform Installer](http://www.microsoft.com/web/downloads/platform.aspx)**. The following instructions guide you through the steps required to install _Visual studio Express 2012 for Web_ using _Microsoft Web Platform Installer_.
+
+1. Go to [http://go.microsoft.com/?linkid=9810169](http://go.microsoft.com/?linkid=9810169). Alternatively, if you already have installed Web Platform Installer, you can open it and search for the product "_Visual Studio Express 2012 for Web with Windows Azure SDK_".
+
+1. Click on **Install Now**. If you do not have **Web Platform Installer** you will be redirected to download and install it first.
+
+1. Once **Web Platform Installer** is open, click **Install** to start the setup.
+
+	![Install Visual Studio Express](images/install-visual-studio-express.png?raw=true "Install Visual Studio Express")
+
+ 	_Install Visual Studio Express_
+
+1. Read all the products' licenses and terms and click **I Accept** to continue.
+
+	![Accepting the license terms](images/accepting-the-license-terms.png?raw=true)
+
+	_Accepting the license terms_
+
+1. Wait until the downloading and installation process completes.
+
+	![Installation progress](images/installation-progress.png?raw=true)
+
+	_Installation progress_
+
+1. When the installation completes, click **Finish**.
+
+	![Installation completed](images/installation-completed.png?raw=true)
+
+	_Installation completed_
+
+1. Click **Exit** to close Web Platform Installer.
+
+1. To open Visual Studio Express for Web, go to the **Start** screen and start writing "**VS Express**", then click on the **VS Express for Web** tile.
+
+	![VS Express for Web tile](images/vs-express-for-web-tile.png?raw=true)
+
+	_VS Express for Web tile_
+
+<a name="AppendixB" />
+## Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy ##
+
+This appendix will show you how to create a new web site from the Windows Azure Management Portal and publish the application you obtained by following the lab, taking advantage of the Web Deploy publishing feature provided by Windows Azure.
+
+<a name="ApxBTask1"></a>
+#### Task 1 – Creating a New Web Site from the Windows Azure Portal ####
+
+1. Go to the [Windows Azure Management Portal](https://manage.windowsazure.com/) and sign in using the Microsoft credentials associated with your subscription.
+
+	![Log on to Windows Azure portal](images/login.png?raw=true "Log on to Windows Azure portal")
+
+	_Log on to Windows Azure Management Portal_
+
+1. Click **New** on the command bar.
+
+	![Creating a new Web Site](images/new-website.png?raw=true "Creating a new Web Site")
+
+	_Creating a new Web Site_
+
+1. Click **Compute** | **Web Site**. Then select **Quick Create** option. Provide an available URL for the new web site and click **Create Web Site**.
+
+	> **Note:** A Windows Azure Web Site is the host for a web application running in the cloud that you can control and manage. The Quick Create option allows you to deploy a completed web application to the Windows Azure Web Site from outside the portal. It does not include steps for setting up a database.
+
+	![Creating a new Web Site using Quick Create](images/quick-create.png?raw=true "Creating a new Web Site using Quick Create")
+
+	_Creating a new Web Site using Quick Create_
+
+1. Wait until the new **Web Site** is created.
+
+1. Once the Web Site is created click the link under the **URL** column. Check that the new Web Site is working.
+
+	![Browsing to the new web site](images/navigate-website.png?raw=true "Browsing to the new web site")
+
+	_Browsing to the new web site_
+
+	![Web site running](images/website-working.png?raw=true "Web site running")
+
+	_Web site running_
+
+1. Go back to the portal and click the name of the web site under the **Name** column to display the management pages.
+
+	![Opening the web site management pages](images/go-to-the-dashboard.png?raw=true "Opening the web site management pages")
+	
+	_Opening the Web Site management pages_
+
+1. In the **Dashboard** page, under the **quick glance** section, click the **Download publish profile** link.
+
+	> **Note:** The _publish profile_ contains all of the information required to publish a web application to a Windows Azure website for each enabled publication method. The publish profile contains the URLs, user credentials and database strings required to connect to and authenticate against each of the endpoints for which a publication method is enabled. **Microsoft WebMatrix 2**, **Microsoft Visual Studio Express for Web** and **Microsoft Visual Studio 2012** support reading publish profiles to automate configuration of these programs for publishing web applications to Windows Azure websites. 
+
+	![Downloading the web site publish profile](images/download-publish-profile.png?raw=true "Downloading the web site publish profile")
+	
+	_Downloading the Web Site publish profile_
+
+1. Download the publish profile file to a known location. Further in this exercise you will see how to use this file to publish a web application to a Windows Azure Web Sites from Visual Studio.
+
+	![Saving the publish profile file](images/save-link.png?raw=true "Saving the publish profile")
+	
+	_Saving the publish profile file_
+
+<a name="ApxBTask2"></a>
+#### Task 2 – Configuring the Database Server ####
+
+If your application makes use of SQL Server databases you will need to create a SQL Database server. If you want to deploy a simple application that does not use SQL Server you might skip this task.
+
+1. You will need a SQL Database server for storing the application database. You can view the SQL Database servers from your subscription in the Windows Azure Management portal at **Sql Databases** | **Servers** | **Server's Dashboard**. If you do not have a server created, you can create one using the **Add** button on the command bar. Take note of the **server name and URL, administrator login name and password**, as you will use them in the next tasks. Do not create the database yet, as it will be created in a later stage.
+
+	![SQL Database Server Dashboard](images/sql-database-server-dashboard.png?raw=true "SQL Database Server Dashboard")
+
+	_SQL Database Server Dashboard_
+
+1. In the next task you will test the database connection from Visual Studio, for that reason you need to include your local IP address in the server's list of **Allowed IP Addresses**. To do that, click **Configure**, select the IP address from **Current Client IP Address** and paste it on the **Start IP Address** and **End IP Address** text boxes and click the ![add-client-ip-address-ok-button](images/add-client-ip-address-ok-button.png?raw=true) button.
+
+	![Adding Client IP Address](images/add-client-ip-address.png?raw=true)
+
+	_Adding Client IP Address_
+
+1. Once the **Client IP Address** is added to the allowed IP addresses list, click on **Save** to confirm the changes.
+
+	![Confirm Changes](images/add-client-ip-address-confirm.png?raw=true)
+
+	_Confirm Changes_
+
+<a name="ApxBTask3"></a>
+#### Task 3 – Publishing an ASP.NET MVC 4 Application using Web Deploy ####
+
+1. Go back to the ASP.NET MVC 4 solution. In the **Solution Explorer**,  right-click the web site project and select **Publish**.
+
+	![Publishing the Application](images/publishing-the-application.png?raw=true "Publishing the Application")
+
+	_Publishing the web site_
+
+1. Import the publish profile you saved in the first task.
+
+	![Importing the publish profile](images/importing-the-publish-profile.png?raw=true "Importing the publish profile")
+
+	_Importing publish profile_
+
+1. Click **Validate Connection**. Once Validation is complete click **Next**.
+
+	> **Note:** Validation is complete once you see a green checkmark appear next to the Validate Connection button.
+
+	![Validating connection](images/validating-connection.png?raw=true "Validating connection")
+
+	_Validating connection_
+
+1. In the **Settings** page, under the **Databases** section, click the button next to your database connection's textbox (i.e. **DefaultConnection**).
+
+	![Web deploy configuration](images/web-deploy-configuration.png?raw=true "Web deploy configuration")
+
+	_Web deploy configuration_
+
+1. Configure the database connection as follows:
+	* In the **Server name** type your SQL Database server URL using the _tcp:_ prefix.
+	* In **User name** type your server administrator login name.
+	* In **Password** type your server administrator login password.
+	* Type a new database name.
+
+	![Configuring destination connection string](images/configuring-destination-connection-string.png?raw=true "Configuring destination connection string")
+
+	_Configuring destination connection string_
+
+1. Then click **OK**. When prompted to create the database click **Yes**.
+
+	![Creating the database](images/creating-the-database.png?raw=true "Creating the database string")
+
+	_Creating the database_
+
+1. The connection string you will use to connect to SQL Database in Windows Azure is shown within Default Connection textbox. Then click **Next**.
+
+	![Connection string pointing to SQL Database](images/sql-database-connection-string.png?raw=true "Connection string pointing to SQL Database")
+
+	_Connection string pointing to SQL Database_
+
+1. In the **Preview** page, click **Publish**.
+
+	![Publishing the web application](images/publishing-the-web-application.png?raw=true "Publishing the web application")
+
+	_Publishing the web application_
+
+1. Once the publishing process finishes, your default browser will open the published web site.
+
+
+<a name="AppendixC"></a>
+## Appendix C: Using Code Snippets ##
+
+With code snippets, you have all the code you need at your fingertips. The lab document will tell you exactly when you can use them, as shown in the following figure.
+
+ ![Using Visual Studio code snippets to insert code into your project](./images/Using-Visual-Studio-code-snippets-to-insert-code-into-your-project.png?raw=true "Using Visual Studio code snippets to insert code into your project")
+ 
+_Using Visual Studio code snippets to insert code into your project_
+
+_**To add a code snippet using the keyboard (C# only)**_
+
+1. Place the cursor where you would like to insert the code.
+
+1. Start typing the snippet name (without spaces or hyphens).
+
+1. Watch as IntelliSense displays matching snippets' names.
+
+1. Select the correct snippet (or keep typing until the entire snippet's name is selected).
+
+1. Press the Tab key twice to insert the snippet at the cursor location.
+
+ 
+   ![Start typing the snippet name](./images/Start-typing-the-snippet-name.png?raw=true "Start typing the snippet name")
+ 
+_Start typing the snippet name_
+
+   ![Press Tab to select the highlighted snippet](./images/Press-Tab-to-select-the-highlighted-snippet.png?raw=true "Press Tab to select the highlighted snippet")
+ 
+_Press Tab to select the highlighted snippet_
+
+   ![Press Tab again and the snippet will expand](./images/Press-Tab-again-and-the-snippet-will-expand.png?raw=true "Press Tab again and the snippet will expand")
+ 
+_Press Tab again and the snippet will expand_
+
+_**To add a code snippet using the mouse (C#, Visual Basic and XML)**_
+1. Right-click where you want to insert the code snippet.
+
+1. Select **Insert Snippet** followed by **My Code Snippets**.
+
+1. Pick the relevant snippet from the list, by clicking on it.
+
+ 
+  ![Right-click where you want to insert the code snippet and select Insert Snippet](./images/Right-click-where-you-want-to-insert-the-code-snippet-and-select-Insert-Snippet.png?raw=true "Right-click where you want to insert the code snippet and select Insert Snippet")
+ 
+_Right-click where you want to insert the code snippet and select Insert Snippet_
+
+ ![Pick the relevant snippet from the list, by clicking on it](./images/Pick-the-relevant-snippet-from-the-list,-by-clicking-on-it.png?raw=true "Pick the relevant snippet from the list, by clicking on it")
+ 
+_Pick the relevant snippet from the list, by clicking on it_
