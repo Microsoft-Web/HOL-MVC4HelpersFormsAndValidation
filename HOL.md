@@ -70,7 +70,7 @@ In this task, you will create a new controller called **StoreManagerController**
 
 1. Open **Visual Studio 2012** and open the **FormsLab-Ex1-Begin.sln** solution located in the **Source\Ex1-CreatingTheStoreManagerController\Begin** folder of this lab.
 
-1. In the Solution Explorer, click the **WebFormsLab** project and select **Manage NuGet Packages**.
+1. In the Solution Explorer, right-click the **MvcMusicStore** project and select **Manage NuGet Packages**.
 
 1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
@@ -303,7 +303,7 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 
 1. Open **Visual Studio 2012** and open the **FormsLab-Ex2-Begin.sln** solution located in the **Source\Ex2-AddingAnHTMLHelper\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
@@ -397,7 +397,7 @@ In this task, you will implement the HTTP-GET version of the Edit action method 
 
 1. Open **Visual Studio 2012** and open the **FormsLab-Ex3-Begin.sln** solution located in the **Source\Ex3-CreatingTheEditView\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
@@ -608,7 +608,7 @@ In this task, you will implement the HTTP-GET version of the Create action metho
 
 1. Open **Visual Studio 2012** and open the **FormsLab-Ex4-Begin.sln** solution located in the **Source\Ex4-AddingACreateView\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
@@ -757,7 +757,7 @@ In this task, you will implement the HTTP-GET version of the Delete action metho
 
 1. Open **Visual Studio 2012** and open the **FormsLab-Ex5-Begin.sln** solution located in the **Source\Ex5-HandlingDeletion\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
@@ -903,7 +903,7 @@ Instead, you can make use of metadata partial classes which will exist to hold t
 
 1. Open **Visual Studio 2012** and open the **FormsLab-Ex6-Begin.sln** solution located in the **Source\Ex6-AddingValidation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
@@ -1000,7 +1000,7 @@ In this task, you will run the application before including jQuery in order to c
 
 1. Open **Visual Studio 2012** and open the **FormsLab-Ex7-Begin.sln** solution located in the **Source\Ex7-UnobtrusivejQueryValidation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, click the **WebFormsLab** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
 
