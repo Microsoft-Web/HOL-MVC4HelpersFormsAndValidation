@@ -72,7 +72,7 @@ In this task, you will create a new controller called **StoreManagerController**
 
 1. In the Solution Explorer, right-click the **MvcMusicStore** project and select **Manage NuGet Packages**.
 
-1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 1. Build the solution by clicking **Build** | **Build Solution**.
 
@@ -305,7 +305,7 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
@@ -399,7 +399,7 @@ In this task, you will implement the HTTP-GET version of the Edit action method 
 
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
@@ -610,7 +610,7 @@ In this task, you will implement the HTTP-GET version of the Create action metho
 
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
@@ -759,7 +759,7 @@ In this task, you will implement the HTTP-GET version of the Delete action metho
 
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
@@ -905,7 +905,7 @@ Instead, you can make use of metadata partial classes which will exist to hold t
 
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
@@ -1002,7 +1002,7 @@ In this task, you will run the application before including jQuery in order to c
 
 	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
 
-	1. In the **Manage NuGet Packages** page, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
 
