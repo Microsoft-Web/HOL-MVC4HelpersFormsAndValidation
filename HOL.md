@@ -1,11 +1,12 @@
 ﻿<a name="HOLTop" />
+
 # ASP.NET MVC 4 Helpers, Forms and Validation #
 ---
 
 <a name="Overview" />
 ## Overview ##
 
-In **ASP.NET MVC Models and Data Access** Hands-on Lab, you have been loading and displaying data from the database. In this Hands-on Lab, you will add to the **Music Store** application the ability to edit that data.
+In **ASP.NET MVC 4 Models and Data Access** Hands-on Lab, you have been loading and displaying data from the database. In this Hands-on Lab, you will add to the **Music Store** application the ability to edit that data.
 
 With that goal in mind, you will first create the controller that will support the Create, Read, Update and Delete (CRUD) actions of albums. You will generate an Index View template taking advantage of ASP.NET MVC’s scaffolding feature to display the albums’ properties in an HTML table. To enhance that view, you will add a custom HTML helper that will truncate long descriptions.
 
@@ -29,16 +30,21 @@ In this Hands-On Lab, you will learn how to:
 - Handle the deletion of an entity
 - Validate user input
 
-<a name="SystemRequirements" />
-### System Requirements ###
+<a name="Prerequisites" />
+### Prerequisites ###
 
 You must have the following items to complete this lab:
 
 - [Microsoft Visual Studio Express 2012 for Web](http://www.microsoft.com/visualstudio/eng/products/visual-studio-express-for-web) or superior (read [Appendix A](#AppendixA) for instructions on how to install it).
 
-### Installing Code Snippets ###
+<a name="Setup" /> 
+### Setup ###
 
-For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run **.\Source\Setup\CodeSnippets.vsi** file.
+**Installing Code Snippets**
+
+For convenience, much of the code you will be managing along this lab is available as Visual Studio code snippets. To install the code snippets run **.\Source\Assets\CodeSnippets.vsi** file.
+
+If you are not familiar with the Visual Studio Code Snippets, and want to learn how to use them, you can refer to the appendix from this document "[Appendix C: Using Code Snippets](#AppendixC)".
 
 ---
 
@@ -47,15 +53,20 @@ For convenience, much of the code you will be managing along this lab is availab
 The following exercises make up this Hands-On Lab:
 
 1. [Creating the Store Manager controller and its Index view](#Exercise1)
+
 1. [Adding an HTML Helper](#Exercise2)
+
 1. [Creating the Edit View](#Exercise3)
+
 1. [Adding a Create View](#Exercise4)
+
 1. [Handling Deletion](#Exercise5)
+
 1. [Adding Validation](#Exercise6)
+
 1. [Using Unobtrusive jQuery at Client Side](#Exercise7)
 
-> **Note:** Each exercise is accompanied by a starting solution. These solutions are missing some code sections that are completed through each exercise and therefore will not necessarily work if running them directly.
-Inside each exercise you will also find an end folder where you find the resulting solution you should obtain after completing the exercises. You can use this solution as a guide if you need additional help working through the exercises.
+> **Note:** Each exercise is accompanied by an **End** folder containing the resulting solution you should obtain after completing the exercises. You can use this solution as a guide if you need additional help working through the exercises.
 
 Estimated time to complete this lab: **60 minutes**
 
@@ -68,13 +79,15 @@ In this exercise, you will learn how to create a new controller to support CRUD 
 ####Task 1 - Creating the StoreManagerController####
 In this task, you will create a new controller called **StoreManagerController** to support CRUD operations.
 
-1. Open **Visual Studio 2012** and open the **FormsLab-Ex1-Begin.sln** solution located in the **Source\Ex1-CreatingTheStoreManagerController\Begin** folder of this lab.
+1. Open the **Begin** solution located at **Source/Ex1-CreatingTheStoreManagerController/Begin/** folder.
 
-1. In the Solution Explorer, right-click the **MvcMusicStore** project and select **Manage NuGet Packages**.
+	1. You will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
-1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
+	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
-1. Build the solution by clicking **Build** | **Build Solution**.
+	1. Finally, build the solution by clicking **Build** | **Build Solution**.
+
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
 
 1. Add a new controller. To do this, right-click the **Controllers** folder within the Solution Explorer, select **Add** and then the **Controller** command. Change the **Controller** **Name** to **StoreManagerController** and make sure the option **MVC controller with empty read/write actions** is selected. Click **Add**.
 
@@ -301,13 +314,15 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 
 >**Note:** To read more about **Extension Methods**, please visit this msdn article. <http://msdn.microsoft.com/en-us/library/bb383977.aspx>.
 
-1. Open **Visual Studio 2012** and open the **FormsLab-Ex2-Begin.sln** solution located in the **Source\Ex2-AddingAnHTMLHelper\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
+1. Open the **Begin** solution located at **Source/Ex2-AddingAnHTMLHelper/Begin/** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
+
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
 
 1. Open StoreManager's Index View. To do this, in the Solution Explorer expand the **Views** folder, then the **StoreManager** and open the **Index.cshtml** file.
 
@@ -395,13 +410,15 @@ Once the user updates the Album form values and clicks the **Save** button, the 
 
 In this task, you will implement the HTTP-GET version of the Edit action method to retrieve the appropriate Album from the database, as well as a list of all Genres and Artists. It will package this data up into the **StoreManagerViewModel** object defined in the last step, which will then be passed to a View template to render the response with.
 
-1. Open **Visual Studio 2012** and open the **FormsLab-Ex3-Begin.sln** solution located in the **Source\Ex3-CreatingTheEditView\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
+1. Open the **Begin** solution located at **Source/Ex3-CreatingTheEditView/Begin/** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
+
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
 
 1.	Open the **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 
@@ -525,7 +542,7 @@ In this task, you will add drop-downs to the View template created in the last t
 In this task, you will test that the **StoreManager** **Edit** View page displays drop-downs instead of Artist and Genre ID text fields.
 
 1.	Press **F5** to run the Application.
-1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/388** to verify that it displays drop-downs instead of Artist and Genre ID text fields.
+1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/136** to verify that it displays drop-downs instead of Artist and Genre ID text fields.
 
 	![Browsing Album's Edit View with drop downs](images/browsing-albums-edit-view-with-drop-downs.png?raw=true "Browsing Album's Edit View with drop downs")
 
@@ -606,13 +623,15 @@ Like you did with the Edit functionality, you will implement the Create scenario
 
 In this task, you will implement the HTTP-GET version of the Create action method to retrieve a list of all Genres and Artists, package this data up into a **StoreManagerViewModel** object, which will then be passed to a View template.
 
-1. Open **Visual Studio 2012** and open the **FormsLab-Ex4-Begin.sln** solution located in the **Source\Ex4-AddingACreateView\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
+1. Open the **Begin** solution located at **Source/Ex4-AddingACreateView/Begin/** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
+
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
 
 1.	Open **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 
@@ -755,13 +774,15 @@ The ability to delete albums is not yet implemented. This is what this exercise 
 
 In this task, you will implement the HTTP-GET version of the Delete action method to retrieve the album’s information.
 
-1. Open **Visual Studio 2012** and open the **FormsLab-Ex5-Begin.sln** solution located in the **Source\Ex5-HandlingDeletion\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
+1. Open the **Begin** solution located at **Source/Ex5-HandlingDeletion/Begin/** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
+
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
 
 1. Open **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
 
@@ -901,13 +922,15 @@ namespace SuperheroSample.Models
 This is a little more complex in cases like this application where the Entity Data Model is generated. If you added Data Annotations directly to the model classes, they would be overwritten if you update the model from the database.
 Instead, you can make use of metadata partial classes which will exist to hold the annotations and are associated with the model classes using the **\[MetadataType\]** attribute.
 
-1. Open **Visual Studio 2012** and open the **FormsLab-Ex6-Begin.sln** solution located in the **Source\Ex6-AddingValidation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
+1. Open the **Begin** solution located at **Source/Ex6-AddingValidation/Begin/** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
+
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
 
 1. Open the **Album.cs** from the **Models** folder.
 
@@ -998,13 +1021,15 @@ In this exercise, you will learn how to enable MVC 4 Unobtrusive jQuery validati
 
 In this task, you will run the application before including jQuery in order to compare both validation models.
 
-1. Open **Visual Studio 2012** and open the **FormsLab-Ex7-Begin.sln** solution located in the **Source\Ex7-UnobtrusivejQueryValidation\Begin** folder of this lab. Alternatively, you can continue working on your existing solution from the previous exercise.
+1. Open the **Begin** solution located at **Source/Ex7-UnobtrusivejQueryValidation/Begin/** folder. Otherwise, you might continue using the **End** solution obtained by completing the previous exercise.
 
-	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, in the Solution Explorer, right-click the **MvcMusicStore** project **Manage NuGet Packages**.
+	1. If you opened the provided **Begin** solution, you will need to download some missing NuGet packages before continue. To do this, click the **Project** menu and select **Manage NuGet Packages**.
 
 	1. In the **Manage NuGet Packages** dialog, click **Restore** in order to download missing packages.
 
 	1. Finally, build the solution by clicking **Build** | **Build Solution**.
+
+	>**Note:** One of the advantages of using NuGet is that you don't have to ship all the libraries in your project, reducing the project size. With NuGet Power Tools, by specifying the package versions in the Packages.config file, you will be able to download all the required libraries the first time you run the project. This is why you will have to run these steps after you open an existing solution from this lab.
 
 1. Press **F5** to run the application.
 
@@ -1165,7 +1190,9 @@ In this task, you will test that the **StoreManager** create view template perfo
 	> data-val-required="Price is required"
 	> id="Album_Price" name="Album.Price" type="text" value="0" />
 	> ````  
-	
+
+>**Note:** Additionally, you can deploy this application to Windows Azure Web Sites following [Appendix B: Publishing an ASP.NET MVC 4 Application using Web Deploy](#AppendixB).
+
 ---
 
 <a name="Summary" />
