@@ -872,7 +872,7 @@ In this task, you will implement the HTTP-POST version of the Delete action meth
 		 this.db.Albums.Remove(album);
 		 this.db.SaveChanges();
 
-		 return RedirectToAction("Index");	
+		 return this.RedirectToAction("Index");	
 	}
 	````
 
@@ -914,6 +914,7 @@ namespace SuperheroSample.Models
     {
         [Required]
         public string Name { get; set; }
+
         public bool WearsCape { get; set; }
     }
 }

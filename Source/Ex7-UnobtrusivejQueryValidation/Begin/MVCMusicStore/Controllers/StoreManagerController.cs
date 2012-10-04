@@ -126,7 +126,7 @@ namespace MvcMusicStore.Controllers
             this.db.Albums.Remove(album);
             this.db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return this.RedirectToAction("Index");
         }
     }
 }
