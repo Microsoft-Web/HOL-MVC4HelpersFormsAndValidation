@@ -300,7 +300,7 @@ In this task, you will test that the **StoreManager** **Index** View template di
 
 The StoreManager Index page has one potential issue: Title and Artist Name properties can both be long enough to throw off the table formatting. In this exercise you will learn how to add a custom HTML helper to truncate that text.
 
-In the following figure, you can see how the format is modified because of the length of the text.
+In the following figure, you can see how the format is modified because of the length of the text when you use a small browser size.
 
 ![Browsing the list of Albums with not truncated text](images/browsing-the-list-of-albums-with-not-truncate.png?raw=true "Browsing the list of Albums with not truncated text")
 
@@ -466,7 +466,7 @@ In this task, you will create an Edit View template that will later display the 
 In this task, you will test that the **StoreManager** **Edit** View page displays the properties' values for the album passed as parameter.
 
 1.	Press **F5** to run the Application.
-1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/136** to verify that the properties' values for the album passed are displayed.
+1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/1** to verify that the properties' values for the album passed are displayed.
 
 	![Browsing Album's Edit View](images/browsing-albums-edit-view.png?raw=true "Browsing Album's Edit View")
 
@@ -542,7 +542,7 @@ In this task, you will add drop-downs to the View template created in the last t
 In this task, you will test that the **StoreManager** **Edit** View page displays drop-downs instead of Artist and Genre ID text fields.
 
 1.	Press **F5** to run the Application.
-1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/136** to verify that it displays drop-downs instead of Artist and Genre ID text fields.
+1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/1** to verify that it displays drop-downs instead of Artist and Genre ID text fields.
 
 	![Browsing Album's Edit View with drop downs](images/browsing-albums-edit-view-with-drop-downs.png?raw=true "Browsing Album's Edit View with drop downs")
 
@@ -600,7 +600,7 @@ In this task, you will test that the **StoreManager Edit** View page actually sa
 
 1.	Press **F5** to run the Application.
 
-1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/136**. Change the Album title to **Greatest Hits Vol. 1** and click on **Save**. Verify that album’s title actually changed in the list of albums.
+1.	The project starts in the Home page. Change the URL to **/StoreManager/Edit/1**. Change the Album title to **Load** and click on **Save**. Verify that album’s title actually changed in the list of albums.
 	
 	![Updating an album](images/updating-an-album.png?raw=true "Updating an album")
 
@@ -1004,7 +1004,7 @@ In this task, you will test that the Create and Edit pages validate fields, usin
 
 	_Validated fields in the Create page_
 
-1.	You can verify that the same occurs with the **Edit** page. Change the URL to **/StoreManager/Edit/136** and verify that the display names match the ones in the partial class (like **Album Art URL** instead of **AlbumArtUrl**). Empty the **Title** and **Price** fields and click **Save**. Verify that you get the corresponding validation messages.
+1.	You can verify that the same occurs with the **Edit** page. Change the URL to **/StoreManager/Edit/1** and verify that the display names match the ones in the partial class (like **Album Art URL** instead of **AlbumArtUrl**). Empty the **Title** and **Price** fields and click **Save**. Verify that you get the corresponding validation messages.
 
 	![Validated fields in the Edit page](images/validated-fields-in-edit-page.png?raw=true)
 
@@ -1262,7 +1262,7 @@ This appendix will show you how to create a new web site from the Windows Azure 
 
 1. Go to the [Windows Azure Management Portal](https://manage.windowsazure.com/) and sign in using the Microsoft credentials associated with your subscription.
 
-	> **Note:** If you do not have a Windows Azure subscription you can sign up for a 90 days free trial [here](http://aka.ms/aspnet-hol-azure).
+	> **Note:** With Windows Azure you can host 10 ASP.NET Web Sites for free and then scale as your traffic grows. You can sign up [here](http://aka.ms/aspnet-hol-azure).
 
 	![Log on to Windows Azure portal](images/login.png?raw=true "Log on to Windows Azure portal")
 
