@@ -106,7 +106,7 @@ In this task, you will customize the StoreManager Index action method to return 
 
 	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 using MvcMusicStore_)
 
-	<!-- mark:1,2 -->
+	<!-- mark:1-3 -->
 	````C#
 	using System.Data;
 	using System.Data.Entity;
@@ -130,7 +130,7 @@ In this task, you will customize the StoreManager Index action method to return 
 
 	(Code Snippet – _ASP.NET MVC 4 Helpers and Forms and Validation – Ex1 StoreManagerController Index_)
 
-	<!-- mark:6-10 -->
+	<!-- mark:6-9 -->
 	````C#
 	//
 	// GET: /StoreManager/
@@ -150,7 +150,7 @@ In this task, you will customize the StoreManager Index action method to return 
 
 In this task, you will create the Index View template to display the list of albums returned by the **StoreManager** Controller.
 
-1.	Before creating the new View template, you should build the project so that the **Add View Dialog** knows about the **Album** class to use. Select **Debug | Build MvcMusicSrore** to build the solution.
+1.	Before creating the new View template, you should build the project so that the **Add View Dialog** knows about the **Album** class to use. Select **Build | Build MvcMusicStore** to build the project.
  
 1.	Right-click inside the **Index** action method and select **Add View**. This will bring up the **Add View** dialog.
 
@@ -327,8 +327,6 @@ In this task, you will add a new method **Truncate** to the **HTML** object expo
 1. Open StoreManager's Index View. To do this, in the Solution Explorer expand the **Views** folder, then the **StoreManager** and open the **Index.cshtml** file.
 
 1.	Add the following code below the **@model** directive to define the **Truncate** helper method.
-
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex2 TruncateHelper_)
 
 	<!-- mark:3-10 -->
 	````C#
@@ -841,6 +839,7 @@ In this task, you will implement the HTTP-GET version of the Delete action metho
 #### Task 2 - Running the Application####
 
 In this task, you will test that the **StoreManager** **Delete** View page displays a confirmation deletion form.
+
 1.	Press **F5** to run the Application.
 
 1.	The project starts in the Home page. Change the URL to **/StoreManager**. Select one album to delete by clicking **Delete** and verify that the new view is uploaded.
@@ -856,11 +855,12 @@ In this task, you will test that the **StoreManager** **Delete** View page displ
 In this task, you will implement the HTTP-POST version of the Delete action method that will be invoked when a user clicks the **Delete** button. The method should delete the album in the database.
 
 1.	Close the browser if needed, to return to the Visual Studio window. Open **StoreManagerController** class. To do this, expand the **Controllers** folder and double-click **StoreManagerController.cs**.
+
 1.	Replace **HTTP-POST Delete** action method code with the following:
 
-	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Handling Deletion HTTP-POST Delete action_)
+	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex5 Handling Deletion HTTP-POST Delete action_)
 
-	<!-- mark:7-12 -->
+	<!-- mark:5-12 -->
 	````C#
 	//
 	// POST: /StoreManager/Delete/5
@@ -942,7 +942,7 @@ Instead, you can make use of metadata partial classes which will exist to hold t
 
 	(Code Snippet - _ASP.NET MVC 4 Helpers and Forms and Validation - Ex6 Album metadata partial class_)
 
-	<!-- mark:5-42 -->
+	<!-- mark:1-36 -->
 	````C#
 	namespace MvcMusicStore.Models
 	{
@@ -998,7 +998,7 @@ In this task, you will test that the Create and Edit pages validate fields, usin
 
 1.	Press **F5** to run the Application.
 1.	The project starts in the Home page. Change the URL to **/StoreManager/Create**.  Verify that the display names match the ones in the partial class (like **Album Art URL** instead of **AlbumArtUrl**)
-1.	Click **Save**, without filling the form. Verify that you get the corresponding validation messages.
+1.	Click **Create**, without filling the form. Verify that you get the corresponding validation messages.
 
 	![Validated fields in the Create page](images/validated-fields-in-create-page.png?raw=true "Validated fields in the Create page")
 
@@ -1034,7 +1034,7 @@ In this task, you will run the application before including jQuery in order to c
 
 1. Press **F5** to run the application.
 
-1. The project starts in the Home page. Browse **/StoreManager/Create** and click **Save** without filling the form to verify that you get validation messages:
+1. The project starts in the Home page. Browse **/StoreManager/Create** and click **Create** without filling the form to verify that you get validation messages:
 
  	![Client validation disabled](./images/validated-fields-in-create-page.png?raw=true "Client validation disabled")
  
@@ -1124,7 +1124,7 @@ In this task, you will test that the **StoreManager** create view template perfo
 
 1. Press **F5** to run the application.
 
-1. The project starts in the Home page. Browse **/StoreManager/Create** and click **Save** without filling the form to verify that you get validation messages:
+1. The project starts in the Home page. Browse **/StoreManager/Create** and click **Create** without filling the form to verify that you get validation messages:
 
  	![Client validation with jQuery enabled](./images/Client-validation-with-jQuery-enabled.png?raw=true "Client validation with jQuery enabled")
  
